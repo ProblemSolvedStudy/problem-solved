@@ -24,16 +24,37 @@ const removeDuplicates = (nums) => {
 splice는 값을 삭제만 하는 기능도 있기 때문이다.  
 근데 인덱스를 0번부터 1씩 커가는 식으로 돌리면 3개 이상 중복인 값은 제대로 지워지지 않는다.  
 사실 이전에 다른 문제를 풀면서도 겪었던 문제인데, 간단하게 뒤에서부터 돌려주면 된다.  
-나처럼 하지 않고 새로운 length 변수를 만들어 거기에 length를 세어줘도 된다.  
+나처럼 하지 않고 새로운 length 변수를 만들어 거기에 length를 세어줘도 된다.
 
 ## Hoi
 
 ### 풀이
 
 ```js
+const removeDuplicates_1 = (nums) => {
+  const result = [];
+
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] === nums[i + 1] || nums[i + 1] === undefined) {
+      result.push(nums[i]);
+    }
+  }
+  return result.length;
+};
+
+const removeDuplicates_2 = (nums) => {
+  const result = nums.filter((el, idx) => el !== nums[idx - 1]);
+
+  return result.length;
+};
 ```
 
 ### 설명
+
+처음에는 함수 내부에 추가적인 메모리를 사용하면 안된다는걸 모르고 문제를 풀었다.
+위에 두 풀이 역시 변수로써 새로운 메모리를 할당 했기 때문에 문제 풀이는 통과하지 못했다.
+첫번째 풀이는 단순히 for문을 이용해서 중복되는 값을 비교하고 그 length를 이용해서 결과를 도출했고
+두번째는 array의 method를 활용해서 좀 더 짧은 로직 안에 결과를 도출할 수 있게 변형했다.
 
 ## Reese
 
@@ -43,8 +64,8 @@ splice는 값을 삭제만 하는 기능도 있기 때문이다.
 
 ```js
 var removeDuplicates = function (nums) {
-	const mySet = new Set(nums);
-	return mySet.size;
+  const mySet = new Set(nums);
+  return mySet.size;
 };
 ```
 
@@ -61,13 +82,13 @@ var removeDuplicates = function (nums) {
 
 ```js
 var removeDuplicates = function (nums) {
-	const numbers = {};
-	nums.forEach((num) => {
-		if (!numbers[num]) {
-			numbers[num] = true;
-		}
-	});
-	return Object.keys(numbers).length;
+  const numbers = {};
+  nums.forEach((num) => {
+    if (!numbers[num]) {
+      numbers[num] = true;
+    }
+  });
+  return Object.keys(numbers).length;
 };
 ```
 
@@ -83,12 +104,12 @@ var removeDuplicates = function (nums) {
 
 ```js
 var removeDuplicates = function (nums) {
-	for (let i = nums.length - 1; i > 0; i--) {
-		if (nums[i] === nums[i - 1]) {
-			nums.splice(i - 1, 1);
-		}
-	}
-	return nums.length;
+  for (let i = nums.length - 1; i > 0; i--) {
+    if (nums[i] === nums[i - 1]) {
+      nums.splice(i - 1, 1);
+    }
+  }
+  return nums.length;
 };
 ```
 
@@ -102,14 +123,14 @@ var removeDuplicates = function (nums) {
 
 ```js
 var removeDuplicates = function (nums) {
-	let unique = 0;
-	for (let i = 1, len = nums.length; i < len; i++) {
-		if (nums[unique] !== nums[i]) {
-			unique++;
-			nums[unique] = nums[i];
-		}
-	}
-	return unique + 1;
+  let unique = 0;
+  for (let i = 1, len = nums.length; i < len; i++) {
+    if (nums[unique] !== nums[i]) {
+      unique++;
+      nums[unique] = nums[i];
+    }
+  }
+  return unique + 1;
 };
 ```
 
