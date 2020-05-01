@@ -3,7 +3,7 @@
 > 2020.04.25.(토)
 
 ## Hoo
- 
+
 ### 풀이
 
 ```js
@@ -25,9 +25,16 @@
 ### 풀이
 
 ```js
+var rotate = function (nums, k) {
+	for (let len = nums.length, i = len - 1; i >= len - k; i--) {
+		nums.unshift(nums.pop());
+	}
+};
 ```
 
 ### 설명
+
+배열의 맨 끝에서부터 요소를 하나씩 제거(`pop`)한 후 `pop`이 반환한 요소를 배열의 맨 앞에 append(`unshift`)했다.
 
 ## Ed
 
