@@ -158,9 +158,17 @@ var removeDuplicates = function (nums) {
 ### 풀이
 
 ```js
+var removeDuplicates = function(nums) {
+   for(let i = nums.length - 1; i > 0; i--) {
+    if(nums[i] === nums[i - 1]) nums.splice(i, 1);
+   }
+    return nums.length;
+};
 ```
 
 ### 설명
+
+리스트를 돌며, 이전 인덱스 수와 같을 경우 원본 리스트에서 해당하는 수를 삭제한다.
 
 ---
 
@@ -173,11 +181,11 @@ var removeDuplicates = function (nums) {
 In-Place 알고리즘은 추가적인 메모리 공간을 사용하지 않고 원본 데이터를 직접적으로 수정하는 알고리즘을 말한다.<br />
 하지만 변수를 담기위한 '작은' 추가 메모리를 사용하는 것은 가능!
 
-### Which Sorting Algorithms are In-Place and which are not?
+### Which Sorting Algorithms are In-Place and which are not
 
 - In Place : Bubble sort, Selection Sort, Insertion Sort, Heapsort.
 - Not In-Place : Merge Sort. Note that merge sort requires O(n) extra space.
 
-### What about QuickSort? Why is it called In-Place?
+### What about QuickSort? Why is it called In-Place
 
 QuickSort uses extra space for recursive function calls. It is called in-place according to broad definition as extra space required is not used to manipulate input, but only for recursive calls.

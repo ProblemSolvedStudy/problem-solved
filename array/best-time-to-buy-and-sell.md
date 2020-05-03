@@ -126,9 +126,18 @@ while (i < numOfPrices - 1) {
 ### 풀이
 
 ```js
+var maxProfit = function(prices) {
+    return prices.reduce((profit, stock, i, arr) => {
+        if (stock < arr[i + 1]) profit += (arr[i + 1] - stock);
+        return profit;
+    }, 0)
+};
 ```
 
 ### 설명
+
+배열을 순회하며 현재 값이 다음 값보다 작을 경우, profit이 있다는 뜻이다.
+그 경우 다음 값에서 현재 값을 뺀 수만큼 profit에 더한 후, 총합을 리턴한다.
 
 ---
 

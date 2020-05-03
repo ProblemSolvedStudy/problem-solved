@@ -74,9 +74,24 @@ var rotate = function (nums, k) {
 ### 풀이
 
 ```js
+var rotate = function(nums, k) {
+    if (nums.length < k) k = k % nums.length;
+    let num = nums.splice(-k, k);
+    for (let i = num.length - 1; i >= 0; i--) {
+        nums.unshift(num[i]);
+    }
+    return nums;
+};
 ```
 
 ### 설명
+
+문제에서는 `k`의 step만큼 순서대로 회전이 이루어진 예시를 보여줬는데, 나의 경우 한번에 회전하는 식으로 문제를 해결하려고 했다.
+
+`k`의 수만큼 우선 `nums` 에서 자르고, `num`이라는 배열로 별도로 분리한다.
+`num` 배열의 수만큼 `nums` 에서 `num` 의 맨 끝에서부터 `unshift` 해서 회전된 형태로 만든다.
+
+앞의 조건문은 `k` 값이 `nums.length` 보다 커지는 케이스를 방지하기 위해 넣었다.
 
 ---
 
