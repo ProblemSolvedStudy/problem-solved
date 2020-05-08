@@ -7,9 +7,19 @@
 ### 풀이
 
 ```js
+const containsDuplicate = (nums) => {
+    const set = new Set(nums);
+    return set.size !== nums.length;
+};
 ```
 
 ### 설명
+
+> 배열 안에 중복되는 값이 있으면 true, 없으면 false를 반환하는 문제
+
+중복을 허용하지 않는 `Set`에 배열을 넣으면 간단히 해결된다.  
+만약 중복이 있다면 set의 크기와 원본 배열의 크기가 다를 것이다.  
+이를 이용해 `boolean` 값을 반환하도록 하면 된다.  
 
 ## Hoi
 
