@@ -18,8 +18,8 @@
 ### 2020.05.09(토)
 
 - [Move Zeroes](https://github.com/ProblemSolvedStudy/problem-solved/blob/master/array/move-zeroes.md)
-- [Two Sum]()
-- [Valid Sudoku]()
+- [Two Sum](https://github.com/ProblemSolvedStudy/problem-solved/blob/master/array/two-sum.md)
+- [Valid Sudoku](https://github.com/ProblemSolvedStudy/problem-solved/blob/master/array/valid-sudoku.md)
 
 
 ## 진행방식
