@@ -36,9 +36,26 @@ XOR은 숫자를 2진수로 변환해 각 숫자가 같으면 0, 다르면 1로 
 ### 풀이
 
 ```js
+var singleNumber = function (nums) {
+	const onlyUnique = new Set();
+	nums.forEach((num) => (!onlyUnique.has(num) ? onlyUnique.add(num) : onlyUnique.delete(num)));
+	return [...onlyUnique][0];
+};
 ```
 
 ### 설명
+
+`nums`는 하나의 요소만 딱 한번 등장하고 이를 제외한 모든 요소가 2번씩 등장하는 배열이다. 문제는 한 번만 등장하는 요소가 무엇인지 찾는거다.<br />
+임의의 Set `onlyUnique`를 만들어 놓고 `nums`를 순회하면서 해당 인자가 `onlyUnique`에 존재하지 않을 경우 `onlyUnique`에 추가하고, 존재할 경우 `onlyUnique`에서 삭제하는 식으로 접근했다.<br />
+두번 등장한 요소는 반드시 `onlyUnique`에서 삭제되기 때문에 순회가 끝난 시점에 `onlyUnique`에 남아 있는 요소가 바로 한 번만 등장하는 요소이다.<br />
+
+<br />
+
+> Set을 array로 변환하는 방법 (spread syntax)
+
+```
+[...Set] = arr
+```
 
 ## Ed
 
