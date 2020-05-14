@@ -8,7 +8,7 @@
 
 ```js
 const singleNumber = (nums) => {
-    return nums.reduce((accu, curr) => accu ^ curr)
+	return nums.reduce((accu, curr) => accu ^ curr);
 };
 ```
 
@@ -45,13 +45,13 @@ XOR은 숫자를 2진수로 변환해 각 숫자가 같으면 0, 다르면 1로 
 ### 풀이
 
 ```js
-var singleNumber = function(nums) {
-    const unique = new Set();
-    for (let i = 0; i < nums.length; i++) {
-        if (unique.has(nums[i])) unique.delete(nums[i]);
-        else unique.add(nums[i]);
-    }
-    return [...unique];
+var singleNumber = function (nums) {
+	const unique = new Set();
+	for (let i = 0; i < nums.length; i++) {
+		if (unique.has(nums[i])) unique.delete(nums[i]);
+		else unique.add(nums[i]);
+	}
+	return [...unique];
 };
 ```
 
