@@ -1,5 +1,27 @@
 # 알고리즘 스터디
 
+## 문제풀이 링크
+
+### 2020.04.25(토)
+
+- [Remove Duplicates from Sorted Array](https://github.com/ProblemSolvedStudy/problem-solved/blob/master/array/remove-duplicates.md)
+- [Best Time to Buy and Sell Stock](https://github.com/ProblemSolvedStudy/problem-solved/blob/master/array/best-time-to-buy-and-sell.md)
+- [Rotate Array](https://github.com/ProblemSolvedStudy/problem-solved/blob/master/array/rotate-array.md)
+
+### 2020.05.02(토)
+
+- [Contains Duplicate](https://github.com/ProblemSolvedStudy/problem-solved/blob/master/array/contains-duplicate.md)
+- [Single Number](https://github.com/ProblemSolvedStudy/problem-solved/blob/master/array/single-number.md)
+- [Intersection of Two Arrays II](https://github.com/ProblemSolvedStudy/problem-solved/blob/master/array/intersection-of-two-arrays-2.md)
+- [Plus One](https://github.com/ProblemSolvedStudy/problem-solved/blob/master/array/plus-one.md)
+
+### 2020.05.09(토)
+
+- [Move Zeroes](https://github.com/ProblemSolvedStudy/problem-solved/blob/master/array/move-zeroes.md)
+- [Two Sum]()
+- [Valid Sudoku]()
+
+
 ## 진행방식
 
 - 온라인 - 행아웃으로 화면, 목소리 공유
