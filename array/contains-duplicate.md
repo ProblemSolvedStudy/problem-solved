@@ -8,8 +8,8 @@
 
 ```js
 const containsDuplicate = (nums) => {
-    const set = new Set(nums);
-    return set.size !== nums.length;
+	const set = new Set(nums);
+	return set.size !== nums.length;
 };
 ```
 
@@ -17,9 +17,9 @@ const containsDuplicate = (nums) => {
 
 > 배열 안에 중복되는 값이 있으면 true, 없으면 false를 반환하는 문제
 
-중복을 허용하지 않는 `Set`에 배열을 넣으면 간단히 해결된다.  
-만약 중복이 있다면 set의 크기와 원본 배열의 크기가 다를 것이다.  
-이를 이용해 `boolean` 값을 반환하도록 하면 된다.  
+중복을 허용하지 않는 `Set`에 배열을 넣으면 간단히 해결된다.<br />
+만약 중복이 있다면 set의 크기와 원본 배열의 크기가 다를 것이다.<br />
+이를 이용해 `boolean` 값을 반환하도록 하면 된다.
 
 ## Hoi
 
@@ -35,17 +35,42 @@ const containsDuplicate = (nums) => {
 ### 풀이
 
 ```js
+var containsDuplicate = function (nums) {
+	const mySet = new Set(nums);
+	return mySet.size !== nums.length;
+};
 ```
 
 ### 설명
+
+Hoo, Ed와 동일한 방법으로 풀었다😅<br />
+중복을 허용하지 않는 `Set`의 성질을 활용해서 리스트의 길이를 비교!
+
+<br />
+
+### 다른 풀이
+
+```js
+var containsDuplicate = function (nums) {
+	const table = {};
+	for (let i = 0, len = num.length; i < len; i++) {
+		table[nums[i]] = table[nums[i]] + 1 || 1;
+		if (table[nums[i]]) return true;
+	}
+	return false;
+};
+```
+
+`nums` 배열을 순회하면서 해당 값이 등장하는 횟수를 객체 `table`에 업데이트 해주는 방법이다. <br />
+특정 값이 2번 이상 등장할 경우 순회를 종료함과 동시에 true를 리턴한다.
 
 ## Ed
 
 ### 풀이
 
 ```js
-var containsDuplicate = function(nums) {
-    return nums.length !== new Set(nums).size;
+var containsDuplicate = function (nums) {
+	return nums.length !== new Set(nums).size;
 };
 ```
 
