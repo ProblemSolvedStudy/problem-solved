@@ -69,9 +69,40 @@ const plusOne = (digits) => {
 ### 풀이
 
 ```js
+var plusOne = function (digits) {
+	let up = true;
+
+	const plus = (digit) => {
+		const plused = digit + 1;
+		if (plused === 10) {
+			up = true;
+			return 0;
+		} else {
+			up = false;
+			return plused;
+		}
+	};
+
+	for (let i = digits.length - 1; i >= 0; i--) {
+		if (up) {
+			digits[i] = plus(digits[i]);
+			if (i === 0 && digits[i] === 0) {
+				digits.unshift(1);
+			}
+		}
+	}
+
+	return digits;
+};
 ```
 
 ### 설명
+
+`parseInt`나 `Number`를 사용한 sting -> number 변환이 불가능한 문제여서 일의 자리에 1을 더한 결과에 따라 한자리씩 올림처리를 해줄지 말지 판별해줘야 했다.<br />
+이러한 판별을 위해 `up`이라는 변수와 `plus`라는 함수를 사용했는데,<br />
+`up`은 true/false boolean값을 가지고 있어서 true이면 올림처리가 필요하다는걸 의미하고, false이면 올림처리가 불필요하다는걸 의미한다.<br />
+`plus`는 특정 자릿수에 1을 더했을때 올림처리가 필요한지 아닌지를 판별해서 해당 자릿수와 `up`의 값을 업데이트 해주는 함수이다.<br />
+`digits`를 뒤에서 부터 순회하면서 `plus` 함수를 통해 값을 업데이트 해주고, 맨 마지막 0번째 인덱스에서 올림처리가 필요할 경우 1을 더해서 문제를 해결했다.
 
 ## Ed
 
