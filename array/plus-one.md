@@ -8,22 +8,23 @@
 
 ```js
 const plusOne = (digits) => {
-    let lastTen = digits.length >= 11? digits.splice(-11, 11) : digits.splice(-digits.length, digits.length);
+	let lastTen =
+		digits.length >= 11 ? digits.splice(-11, 11) : digits.splice(-digits.length, digits.length);
 
-    const isFirstZero = lastTen[0] === 0  && digits.length > 0;
-    const isSecondZero = lastTen[1] === 0  && digits.length > 1 && isFirstZero;
+	const isFirstZero = lastTen[0] === 0 && digits.length > 0;
+	const isSecondZero = lastTen[1] === 0 && digits.length > 1 && isFirstZero;
 
-    const plusNumber = parseInt(lastTen.join('')) + 1;
-    const resultLast = plusNumber.toString().split('');
-    
-    const resultLastNum = [];
-    resultLast.forEach(el => resultLastNum.push(parseInt(el)));
+	const plusNumber = parseInt(lastTen.join("")) + 1;
+	const resultLast = plusNumber.toString().split("");
 
-    if (isFirstZero) digits.push(0);
-    if (isSecondZero) digits.push(0);
+	const resultLastNum = [];
+	resultLast.forEach((el) => resultLastNum.push(parseInt(el)));
 
-    resultLastNum.forEach(el => digits.push(el));
-    return digits;
+	if (isFirstZero) digits.push(0);
+	if (isSecondZero) digits.push(0);
+
+	resultLastNum.forEach((el) => digits.push(el));
+	return digits;
 };
 ```
 
@@ -31,12 +32,12 @@ const plusOne = (digits) => {
 
 ```js
 const plusOne = (digits) => {
-    for(var i = digits.length - 1; i >= 0; i--){
-      if(++digits[i] > 9) digits[i] = 0;
-      else return digits;
-    }
-    digits.unshift(1);
-    return digits;
+	for (var i = digits.length - 1; i >= 0; i--) {
+		if (++digits[i] > 9) digits[i] = 0;
+		else return digits;
+	}
+	digits.unshift(1);
+	return digits;
 };
 ```
 
@@ -46,14 +47,13 @@ const plusOne = (digits) => {
 
 처음에 9와 같이 경계선에 있는 값을 생각하고 무작정 배열을 숫자로 변환해 더했다.  
 자바스크립트의 숫자형이 감당할 수 없는 크기의 숫자가 배열로 나오면 `Fail`이 발생했다.  
-그것에 예외처리를 해 주기 위해 숫자를 중간부터 잘라서 더하는 일도 해 봤지만, `999999999999...`와 같은 값은 계산이 불가능하다.  
+그것에 예외처리를 해 주기 위해 숫자를 중간부터 잘라서 더하는 일도 해 봤지만, `999999999999...`와 같은 값은 계산이 불가능하다.
 
 이 문제는 주어진 값이 배열인 점을 이용해서 반복해서 올림이 있는지 찾아내서 값을 바꿔 준다.  
 근데 `digits.unshift(1);`를 했을 때 아래 이미지처럼 자동으로 맨 앞자리가 0인 것과 아닌 것을 구분해 1을 붙여 줬다.  
-이에 대한 이유를 찾지 못했다. 
+이에 대한 이유를 찾지 못했다.
 
 ![image](https://user-images.githubusercontent.com/30427711/81428662-870bad00-9197-11ea-87cf-a0a5bcff1ee7.png)
-
 
 ## Hoi
 
@@ -78,14 +78,14 @@ const plusOne = (digits) => {
 ### 풀이
 
 ```js
-var plusOne = function(digits) {
-    // return new String(parseInt(digits.join('')) + 1).split('').map(Number);
+var plusOne = function (digits) {
+	// return new String(parseInt(digits.join('')) + 1).split('').map(Number);
 
-    let i = digits.length - 1;
-    while (digits[i] === 9) digits[i--] = 0;
-    if (i < 0) digits.unshift(1);
-    else digits[i] += 1;
-    return digits;
+	let i = digits.length - 1;
+	while (digits[i] === 9) digits[i--] = 0;
+	if (i < 0) digits.unshift(1);
+	else digits[i] += 1;
+	return digits;
 };
 ```
 
