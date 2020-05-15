@@ -41,9 +41,23 @@ const moveZeroes = (nums) => {
 ### 풀이
 
 ```js
+var moveZeroes = function (nums) {
+	let numOfZeros = 0;
+	for (let i = nums.length - 1; i >= 0; i--) {
+		if (nums[i] === 0) {
+			nums.splice(i, 1);
+			numOfZeros++;
+		}
+	}
+	for (let j = numOfZeros; j > 0; j--) {
+		nums.push(0);
+	}
+};
 ```
 
 ### 설명
+
+1차적으로 `nums`를 순회하면서 0이 등장할 때마다 splice 하여 0을 제거하고 `numOfZeros` 값을 1씩 더해서 0이 등장하는 횟수를 업데이트 해나갔다.<br />순회가 끝나면 `numOfZeros`의 값 만큼 0을 추가해준다.
 
 ## Ed
 
