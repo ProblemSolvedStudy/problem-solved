@@ -8,19 +8,19 @@
 
 ```js
 const intersect = (nums1, nums2) => {
-    let result = [];
-    
-    for (let i = nums1.length-1; i >= 0; i--) {
-        for (let j = 0; j < nums2.length; j++) {
-            if (nums1[i] === nums2[j]) {
-                result.push(nums1[i]);
-                nums1.splice(i, 1);
-                nums2.splice(j, 1);
-            }
-        }
-    }
-    
-    return result;
+	let result = [];
+
+	for (let i = nums1.length - 1; i >= 0; i--) {
+		for (let j = 0; j < nums2.length; j++) {
+			if (nums1[i] === nums2[j]) {
+				result.push(nums1[i]);
+				nums1.splice(i, 1);
+				nums2.splice(j, 1);
+			}
+		}
+	}
+
+	return result;
 };
 ```
 
@@ -30,8 +30,7 @@ const intersect = (nums1, nums2) => {
 
 마땅한 더 좋은 방법이 생각이 나지 않아서 이중 반복문을 사용했다.  
 이중 반복문을 돌아 값을 하나씩 비교하면서 같으면 배열에 `push`하고 두 배열에서는 삭제하도록 했다.  
-삭제하지 않으면 `[4,9,4,9]`와 같은 중복되는 값이 걸러지지 않고 추가로 배열에 들어가 버린다.  
-
+삭제하지 않으면 `[4,9,4,9]`와 같은 중복되는 값이 걸러지지 않고 추가로 배열에 들어가 버린다.
 
 ## Hoi
 
