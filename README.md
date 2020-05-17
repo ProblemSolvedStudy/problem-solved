@@ -23,9 +23,9 @@
 
 ### 2020.05.17(일)
 
-- [Reverse String](https://github.com/ProblemSolvedStudy/problem-solved/blob/master/string/reverse-string.md)
-- [Reverse Integer](https://github.com/ProblemSolvedStudy/problem-solved/blob/master/string/reverse-integer.md)
-- [First Unique Character in a String](https://github.com/ProblemSolvedStudy/problem-solved/blob/master/string/first-unique-char-in-a-string.md)
+- [Reverse String](https://github.com/ProblemSolvedStudy/problem-solved/blob/master/strings/reverse-string.md)
+- [Reverse Integer](https://github.com/ProblemSolvedStudy/problem-solved/blob/master/strings/reverse-integer.md)
+- [First Unique Character in a String](https://github.com/ProblemSolvedStudy/problem-solved/blob/master/strings/first-unique-char-in-a-string.md)
 
 ## 진행방식
 
