@@ -8,11 +8,8 @@
 
 ```js
 const isAnagram = (s, t) => {
-  if (s.length !== t.length) return false;
-
   const listS = s.split("").sort();
   const listT = t.split("").sort();
-  let result = true;
 
   return JSON.stringify(listS) === JSON.stringify(listT);
 };
@@ -53,9 +50,9 @@ const isAnagram = (s, t) => {
 ### 풀이
 
 ```js
-var isAnagram = function(...words) {
-    const sortedWord = word => word.split("").sort().join("");
-    return new Set(words.map(sortedWord)).size === 1 ? true : false;
+var isAnagram = function (...words) {
+  const sortedWord = (word) => word.split("").sort().join("");
+  return new Set(words.map(sortedWord)).size === 1 ? true : false;
 };
 ```
 
