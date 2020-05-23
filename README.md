@@ -27,6 +27,10 @@
 - [Reverse Integer](https://github.com/ProblemSolvedStudy/problem-solved/blob/master/strings/reverse-integer.md)
 - [First Unique Character in a String](https://github.com/ProblemSolvedStudy/problem-solved/blob/master/strings/first-unique-char-in-a-string.md)
 
+### 2020.05.23(토)
+- [Valid Anagram](https://github.com/ProblemSolvedStudy/problem-solved/blob/master/strings/valid-anagram.md)
+- [Valid Palindrome](https://github.com/ProblemSolvedStudy/problem-solved/blob/master/strings/valid-palindrome.md)
+
 ## 진행방식
 
 - 온라인 - 행아웃으로 화면, 목소리 공유
