@@ -32,15 +32,6 @@ const isAnagram = (s, t) => {
 ### 풀이
 
 ```js
-```
-
-### 설명
-
-## Reese
-
-### 풀이
-
-```js
 var isAnagram = function (s, t) {
   const _t = t.split("").sort().join("");
   const _s = s.split("").sort().join("");
@@ -59,6 +50,15 @@ var isAnagram = function (s, t) {
 2. 문자열의 정렬을 위해서 split을 사용해서 배열로 만듬
 3. 각각의 문자열을 sort하면 이 문지열의 구성이 같은지를 확인할 수 있으니 sort를 통해서 문자를 정렬
 4. join으로 다시 문자열로 만들어 준 후 비교 연산자를 통해서 결과를 return
+
+### 설명
+
+## Reese
+
+### 풀이
+
+```js
+```
 
 ## Ed
 
