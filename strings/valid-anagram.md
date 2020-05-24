@@ -32,15 +32,6 @@ const isAnagram = (s, t) => {
 ### 풀이
 
 ```js
-```
-
-### 설명
-
-## Reese
-
-### 풀이
-
-```js
 var isAnagram = function (s, t) {
   const _t = t.split("").sort().join("");
   const _s = s.split("").sort().join("");
@@ -59,6 +50,62 @@ var isAnagram = function (s, t) {
 2. 문자열의 정렬을 위해서 split을 사용해서 배열로 만듬
 3. 각각의 문자열을 sort하면 이 문지열의 구성이 같은지를 확인할 수 있으니 sort를 통해서 문자를 정렬
 4. join으로 다시 문자열로 만들어 준 후 비교 연산자를 통해서 결과를 return
+
+## Reese
+
+### 문제이해
+
+2개의 문자열을 인자로 받아서 둘이 서로 anagram 관계인지 판별하여 boolean 값을 반환하는 문제이다.
+
+> anagram이란, 한 단어를 구성하는 글자의 개수를 그대로 유지하면서 순서만 바꾼 단어를 일컫는 말
+
+### 풀이
+
+#### 방법 1
+
+```js
+var isAnagram = function (s, t) {
+  const sortedS = s.split("").sort().join("");
+  const sortedT = t.split("").sort().join("");
+  return sortedS === sortedT;
+};
+```
+
+### 설명
+
+hoi와 동일한 풀이이다. 두 문자열을 배열로 변환하고 정렬하여 다시 문자열로 바꾼 뒤, 동일한지 비교하는 것이다.
+
+<br />
+
+### 방법 2
+
+```js
+const isAnagram = function (s, t) {
+  if (s.length !== t.length) return false;
+
+  const map = {};
+
+  for (let i = 0; i < s.length; i++) {
+    map[s[i]] ? map[s[i]]++ : (map[s[i]] = 1);
+  }
+
+  for (let i = 0; i < t.length; i++) {
+    if (map[t[i]]) {
+      map[t[i]]--;
+    } else {
+      return false;
+    }
+  }
+
+  return true;
+};
+```
+
+### 설명
+
+- 두 문자열의 길이를 비교해서 길이가 다를 경우 early return을 해준다.
+- 문자열 s를 순회하면서 해당 문자가 객체의 키값으로 존재하는지 확인하면서 문자가 등장하는 횟수를 업데이트 한다. (방법 1과 동일)
+- 문자열s 순회가 끝나면 t를 순회하면서 객체를 탐색한다. 문자가 객체의 키값으로 존재하면 갯수(value)를 하나씩 차감해 나가고, 키값으로 존재하지 않으면 즉시 false를 리턴한다.
 
 ## Ed
 
