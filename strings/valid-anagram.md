@@ -75,6 +75,38 @@ var isAnagram = function (s, t) {
 
 hoi와 동일한 풀이이다. 두 문자열을 배열로 변환하고 정렬하여 다시 문자열로 바꾼 뒤, 동일한지 비교하는 것이다.
 
+<br />
+
+### 방법 2
+
+```js
+const isAnagram = function (s, t) {
+  if (s.length !== t.length) return false;
+
+  const map = {};
+
+  for (let i = 0; i < s.length; i++) {
+    map[s[i]] ? map[s[i]]++ : (map[s[i]] = 1);
+  }
+
+  for (let i = 0; i < t.length; i++) {
+    if (map[t[i]]) {
+      map[t[i]]--;
+    } else {
+      return false;
+    }
+  }
+
+  return true;
+};
+```
+
+### 설명
+
+- 두 문자열의 길이를 비교해서 길이가 다를 경우 early return을 해준다.
+- 문자열 s를 순회하면서 해당 문자가 객체의 키값으로 존재하는지 확인하면서 문자가 등장하는 횟수를 업데이트 한다. (방법 1과 동일)
+- 문자열s 순회가 끝나면 t를 순회하면서 객체를 탐색한다. 문자가 객체의 키값으로 존재하면 갯수(value)를 하나씩 차감해 나가고, 키값으로 존재하지 않으면 즉시 false를 리턴한다.
+
 ## Ed
 
 ### 풀이
