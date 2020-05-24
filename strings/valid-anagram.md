@@ -51,14 +51,29 @@ var isAnagram = function (s, t) {
 3. 각각의 문자열을 sort하면 이 문지열의 구성이 같은지를 확인할 수 있으니 sort를 통해서 문자를 정렬
 4. join으로 다시 문자열로 만들어 준 후 비교 연산자를 통해서 결과를 return
 
-### 설명
-
 ## Reese
+
+### 문제이해
+
+2개의 문자열을 인자로 받아서 둘이 서로 anagram 관계인지 판별하여 boolean 값을 반환하는 문제이다.
+
+> anagram이란, 한 단어를 구성하는 글자의 개수를 그대로 유지하면서 순서만 바꾼 단어를 일컫는 말
 
 ### 풀이
 
+#### 방법 1
+
 ```js
+var isAnagram = function (s, t) {
+  const sortedS = s.split("").sort().join("");
+  const sortedT = t.split("").sort().join("");
+  return sortedS === sortedT;
+};
 ```
+
+### 설명
+
+hoi와 동일한 풀이이다. 두 문자열을 배열로 변환하고 정렬하여 다시 문자열로 바꾼 뒤, 동일한지 비교하는 것이다.
 
 ## Ed
 
