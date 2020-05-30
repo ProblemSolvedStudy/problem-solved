@@ -1,4 +1,4 @@
-# [124 나라의 숫자](https://programmers.co.kr/learn/courses/30/lessons/12900)
+# [2 x n 타일링](https://programmers.co.kr/learn/courses/30/lessons/12900)
 
 > 2020.05.30(토)
 
