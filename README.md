@@ -28,8 +28,14 @@
 - [First Unique Character in a String](https://github.com/ProblemSolvedStudy/problem-solved/blob/master/strings/first-unique-char-in-a-string.md)
 
 ### 2020.05.23(토)
+
 - [Valid Anagram](https://github.com/ProblemSolvedStudy/problem-solved/blob/master/strings/valid-anagram.md)
 - [Valid Palindrome](https://github.com/ProblemSolvedStudy/problem-solved/blob/master/strings/valid-palindrome.md)
+
+### 2020.05.30(토)
+
+- [124 나라의 숫자](https://github.com/ProblemSolvedStudy/problem-solved/blob/master/programmers/124.md)
+- [2 x n 타일링](https://github.com/ProblemSolvedStudy/problem-solved/blob/master/programmers/2n-tiling.md)
 
 ## 진행방식
 
