@@ -2,6 +2,11 @@
 
 ## 문제풀이 링크
 
+[LeetCode - Top Interview Questions (Easy)](https://leetcode.com/explore/interview/card/top-interview-questions-easy/)
+
+<details><summary>LeetCode - Array 풀이 보기 (클릭)</summary>
+<p>
+
 ### 2020.04.25(토)
 
 - [Remove Duplicates from Sorted Array](https://github.com/ProblemSolvedStudy/problem-solved/blob/master/array/remove-duplicates.md)
@@ -21,6 +26,12 @@
 - [Two Sum](https://github.com/ProblemSolvedStudy/problem-solved/blob/master/array/two-sum.md)
 - [Valid Sudoku](https://github.com/ProblemSolvedStudy/problem-solved/blob/master/array/valid-sudoku.md)
 
+</p>
+</details>
+
+<details><summary>LeetCode - Strings</summary>
+<p>
+
 ### 2020.05.17(일)
 
 - [Reverse String](https://github.com/ProblemSolvedStudy/problem-solved/blob/master/strings/reverse-string.md)
@@ -32,18 +43,44 @@
 - [Valid Anagram](https://github.com/ProblemSolvedStudy/problem-solved/blob/master/strings/valid-anagram.md)
 - [Valid Palindrome](https://github.com/ProblemSolvedStudy/problem-solved/blob/master/strings/valid-palindrome.md)
 
+</p>
+</details>
+
+###
+
+[Programmers 연습문제](https://programmers.co.kr/learn/courses/30/)
+
+<details><summary>Programmers</summary>
+<p>
+
 ### 2020.05.30(토)
 
 - [124 나라의 숫자](https://github.com/ProblemSolvedStudy/problem-solved/blob/master/programmers/124.md)
 - [2 x n 타일링](https://github.com/ProblemSolvedStudy/problem-solved/blob/master/programmers/2n-tiling.md)
+
+</p>
+</details>
+
+###
+
+[HackerRank - Interview Preparation Kit](https://www.hackerrank.com/interview/interview-preparation-kit)
+
+<details><summary>HackerRank</summary>
+<p>
+
+### 2020.05.30(토)
+
+- []()
+- []()
+
+</p>
+</details>
 
 ## 진행방식
 
 - 온라인 - 행아웃으로 화면, 목소리 공유
 - 요일 - 토/일 중 하루
 - 시간 - 오전 11시부터 2시간 정도
-- 풀이할 사이트 - LeetCode
-  - [Top Interview Questions (Easy)](https://leetcode.com/explore/interview/card/top-interview-questions-easy/)
 - 풀고 싶은 사이트/문제 있으면 추천 부탁
 
 ## 규칙
