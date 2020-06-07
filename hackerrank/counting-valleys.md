@@ -59,7 +59,6 @@ function upOrDown(value) {
   return value === "U" ? false : true;
 }
 
-// Complete the countingValleys function below.
 function countingValleys(n, s) {
   let isValley = upOrDown(s[0]);
   let numOfVallies = 0;
@@ -90,6 +89,30 @@ function countingValleys(n, s) {
 1. 요소가 "U"일 경우 `currLevel`을 1씩 증가시키고 "D"일 경우 `currLevel`을 1씩 감소시킨다.
 2. `currLevel`이 0일 때마다 `isValley`값을 확인하여 valley인지 아닌지를 판별한다. 이때 valley일경우 `numOfVallies`를 1 증가시키고 값("U" or "D")을 확인하여 `isValley`의 값을 재할당한다.
    > `currLevel`의 값이 0일때를 기점으로 다음 값이 "U"일 경우 mountain이 되고 "D"일 경우 valley가 된다. 이러한 판별은 upOrDown이라는 별도의 유틸함수를 사용했다.
+
+### 다른 풀이
+
+```js
+function countingValleys(n, s) {
+  let valley = 0;
+  let counter = 0;
+
+  for (let step of s) {
+    counter = step === "U" ? counter - 1 : counter + 1;
+    if (step === "U" && counter === 0) {
+      valley++;
+    }
+  }
+
+  return valley;
+}
+```
+
+discussions에서 찾은 javascript 풀이이다.
+
+풀이방식도 코드도 참 간단하다.<br />"U"이후에 현재높이 (`counter`)가 0일 경우에만 valley 갯수를 1 더해준다!
+
+문자열을 배열로 변환하지 않고 [for...of](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of)로 순회한 점도 좋다. 공간복잡도 측면에서 효율적인 방법인듯.
 
 ## Ed
 
