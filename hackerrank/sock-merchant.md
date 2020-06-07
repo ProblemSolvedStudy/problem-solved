@@ -51,9 +51,42 @@ function sockMerchant(n, ar) {
 ### 풀이
 
 ```js
+function sockMerchant(n, ar) {
+  const tableOfSocks = new Map();
+
+  ar.forEach((sock) => {
+    tableOfSocks.has(sock)
+      ? tableOfSocks.set(sock, tableOfSocks.get(sock) + 1)
+      : tableOfSocks.set(sock, 1);
+  });
+
+  return [...tableOfSocks.values()].reduce((pairs, numOfSocks) => {
+    pairs += Math.floor(numOfSocks / 2);
+    return pairs;
+  }, 0);
+}
 ```
 
 ### 설명
+
+임의의 Map (`tableOfSocks`)를 생성하고 인자로 받은 양말 리스트(ar)를 순회하면서 색상별 양말 갯수를 key(색상)-value(갯수) pair로 하여 테이블에 업데이트 해나간다.
+
+```
+Map {
+  1: 3,
+  3: 4,
+  5: 1
+}
+```
+
+색상이 같은 양말이 몇 쌍 나오는지 구하는 문제이기 때문에 `tableOfSocks`의 value를 배열로 변환한 뒤 reduce 메소드를 사용하여 2로 나눈 몫을 누적하여 리턴해주었다.
+
+---
+
+- 시간복잡도: **O(n)** (forEach로 배열을 순회할 때 O(n) + reduce로 배열 순회할 때 O(n))
+- 공간복잡도: **O(m)** (n >= m, 인자로 받은 ar을 제외하고 Map을 생성할때 O(m) + Map의 value들을 담은 배열을 생성할때 O(m))
+
+---
 
 ## Ed
 
