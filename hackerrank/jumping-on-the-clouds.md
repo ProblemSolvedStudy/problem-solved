@@ -75,12 +75,30 @@ function jumpingOnClouds(c) {
 
 ## Reese
 
+### 문제이해
+
+`[0, 1, 0, 0, 0, 1, 0]`과 같이 0 또는 1로만 이루어진 배열을 인자로 전달받아서 0번째 인덱스부터 1 또는 2 인덱스를 이동하여 마지막 인덱스까지 이동하는데 필요한 이동 횟수를 구하는 문제이다. 이동할때는 0으로만 이동할 수 있다. 즉, 이동했을 때 도착한 인덱스의 값이 1이면 안된다.
+
 ### 풀이
 
 ```js
+function jumpingOnClouds(c) {
+  let i = 0;
+  let numOfJumps = 0;
+  const numOfClouds = c.length - 1;
+
+  while (i < numOfClouds) {
+    !c[i + 2] ? (i += 2) : (i += 1);
+    numOfJumps++;
+  }
+
+  return numOfJumps;
+}
 ```
 
 ### 설명
+
+2칸 이동시의 값이 0인지 1인지를 비교해서 인덱스(`i`)를 제어하고 이동 횟수(`numOfJumps`)를 1씩 증가시켰다.
 
 ## Ed
 
