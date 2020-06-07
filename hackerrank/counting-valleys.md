@@ -61,33 +61,33 @@ function upOrDown(value) {
 
 function countingValleys(n, s) {
   let isValley = upOrDown(s[0]);
-  let numOfVallies = 0;
+  let numOfVallys = 0;
   let currLevel = 0;
 
   const steps = s.split("");
 
   for (let i = 0; i <= n; i++) {
     if (i !== 0 && currLevel === 0) {
-      if (isValley) numOfVallies++;
+      if (isValley) numOfVallys++;
       isValley = upOrDown(steps[i]);
     }
     steps[i] === "U" ? currLevel++ : currLevel--;
   }
 
-  return numOfVallies;
+  return numOfVallys;
 }
 ```
 
 ### 설명
 
-현재 높이(`currLevel`)가 0일때마다 valley인지 아닌지의 여부를 판단하여(`isValley`) valley 갯수(`numOfVallies`)를 업데이트 해나가는 식으로 접근했다.
+현재 높이(`currLevel`)가 0일때마다 valley인지 아닌지의 여부를 판단하여(`isValley`) valley 갯수(`numOfVallys`)를 업데이트 해나가는 식으로 접근했다.
 
 `currLevel`는 해수면을 기준으로 한 현재 높이를 나타내는 변수이다. 시작지점의 높이는 해수면과 동일하기 때문에 초기값은 0이 된다.
 
 그리고 인자로 받은 문자열 s를 배열로 변환한 후 순회를 돌면서 아래 2가지 과정을 반복한다.
 
 1. 요소가 "U"일 경우 `currLevel`을 1씩 증가시키고 "D"일 경우 `currLevel`을 1씩 감소시킨다.
-2. `currLevel`이 0일 때마다 `isValley`값을 확인하여 valley인지 아닌지를 판별한다. 이때 valley일경우 `numOfVallies`를 1 증가시키고 값("U" or "D")을 확인하여 `isValley`의 값을 재할당한다.
+2. `currLevel`이 0일 때마다 `isValley`값을 확인하여 valley인지 아닌지를 판별한다. 이때 valley일경우 `numOfVallys`를 1 증가시키고 값("U" or "D")을 확인하여 `isValley`의 값을 재할당한다.
    > `currLevel`의 값이 0일때를 기점으로 다음 값이 "U"일 경우 mountain이 되고 "D"일 경우 valley가 된다. 이러한 판별은 upOrDown이라는 별도의 유틸함수를 사용했다.
 
 ### 다른 풀이
