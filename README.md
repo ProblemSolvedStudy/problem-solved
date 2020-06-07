@@ -29,7 +29,7 @@
 </p>
 </details>
 
-<details><summary>LeetCode - Strings</summary>
+<details><summary>LeetCode - Strings 풀이 보기 (클릭)</summary>
 <p>
 
 ### 2020.05.17(일)
@@ -50,7 +50,7 @@
 
 [Programmers 연습문제](https://programmers.co.kr/learn/courses/30/)
 
-<details><summary>Programmers</summary>
+<details><summary>Programmers 풀이 보기 (클릭)</summary>
 <p>
 
 ### 2020.05.30(토)
@@ -65,13 +65,14 @@
 
 [HackerRank - Interview Preparation Kit](https://www.hackerrank.com/interview/interview-preparation-kit)
 
-<details><summary>HackerRank</summary>
+<details><summary>HackerRank Wram Up 풀이 보기 (클릭)</summary>
 <p>
 
-### 2020.05.30(토)
+### 2020.06.07(일)
 
-- []()
-- []()
+- [Sock Merchant](https://github.com/ProblemSolvedStudy/problem-solved/blob/master/hackerrank/sock-merchant.md)
+- [Counting Valleys](https://github.com/ProblemSolvedStudy/problem-solved/blob/master/hackerrank/counting-valleys.md)
+- [Jumping on the Clouds](https://github.com/ProblemSolvedStudy/problem-solved/blob/master/hackerrank/jumping-on-the-clouds.md)
 
 </p>
 </details>
