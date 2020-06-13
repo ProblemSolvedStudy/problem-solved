@@ -74,6 +74,12 @@
 - [Counting Valleys](https://github.com/ProblemSolvedStudy/problem-solved/blob/master/hackerrank/counting-valleys.md)
 - [Jumping on the Clouds](https://github.com/ProblemSolvedStudy/problem-solved/blob/master/hackerrank/jumping-on-the-clouds.md)
 
+### 2020.06.13(토)
+
+- [Repeated String](https://github.com/ProblemSolvedStudy/problem-solved/blob/master/hackerrank/repeated-string.md)
+- [2D Array - DS](https://github.com/ProblemSolvedStudy/problem-solved/blob/master/hackerrank/2d-array-ds.md)
+- [Arrays: Left Rotation](https://github.com/ProblemSolvedStudy/problem-solved/blob/master/hackerrank/array-left-rotation.md)
+
 </p>
 </details>
 
