@@ -8,17 +8,17 @@
 
 ```js
 function repeatedString(s, n) {
-    const aCount = (s.match(/a/g) || []).length;
-    const quotient = Math.floor(n / s.length);
-    const remainder = n % s.length;
+  const aCount = (s.match(/a/g) || []).length;
+  const quotient = Math.floor(n / s.length);
+  const remainder = n % s.length;
 
-    let result = aCount * quotient;
+  let result = aCount * quotient;
 
-    for (let i = 0; i < remainder; i++) {
-        if (s[i] === "a") result++;
-    }
+  for (let i = 0; i < remainder; i++) {
+    if (s[i] === "a") result++;
+  }
 
-    return result;
+  return result;
 }
 ```
 
@@ -47,9 +47,32 @@ function repeatedString(s, n) {
 ### 풀이
 
 ```js
+// 문자열 안에 들어있는 "a"의 갯수를 구하는 함수
+function getNumOfAs(string) {
+  let numOfAs = 0;
+  for (const char of string) {
+    numOfAs += char === "a" ? 1 : 0;
+  }
+  return numOfAs;
+}
+
+function repeatedString(s, n) {
+  const length = s.length;
+
+  //n개의 문자 안에 문자열 s가 잘리지 않고 온전히 들어가는 횟수
+  const quotient = Math.floor(n / length);
+
+  // 잘린 문자열 s의 길이
+  const remainder = n % length;
+
+  return getNumOfAs(s) * quotient + getNumOfAs(s.slice(0, remainder));
+}
 ```
 
 ### 설명
+
+`n`을 `s`의 길이로 나눈 몫과 나머지를 구한 다음<br />
+(`s`안에 들어있는 "a"의 갯수) \* 몫 + (잘린 문자열에 들어있는 "a"의 갯수)를 반환했다.
 
 ## Ed
 
