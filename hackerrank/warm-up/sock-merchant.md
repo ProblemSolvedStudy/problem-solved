@@ -93,9 +93,23 @@ Map {
 ### 풀이
 
 ```js
+function sockMerchant(n, ar) {
+    const socksMap = new Map();
+    const getSocks = sock => socksMap.get(sock);
+
+    return ar.reduce((count, sock) => {
+        socksMap.set(sock, getSocks(sock) ? getSocks(sock) + 1 : 1);
+        if (getSocks(sock) % 2 === 0) count++;
+        return count;
+    }, 0)
+}
 ```
 
 ### 설명
+
+> 색이 같은(같은 배열의) 양말 짝의 수를 구하는 문제
+
+별도의 `Map`을 만들고, `ar` 배열을 순회하며 양말 색(각 배열 요소)을 key값으로 넣어준다. 양말을 `Map.get`했을 때 없다면 1을, 아니라면 기존 값에 1을 추가한다. 양말을 더한 후, 수가 짝수라면 양말이 짝을 이루었다는 뜻이므로 reduce 내부 `count` 값을 1 증가시킨다.
 
 ---
 
