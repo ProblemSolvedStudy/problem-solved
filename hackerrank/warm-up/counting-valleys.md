@@ -119,9 +119,29 @@ discussions에서 찾은 javascript 풀이이다.
 ### 풀이
 
 ```js
+function countingValleys(n, s) {
+    let valleyCount = 0;
+    let level = 0;
+    s.split("").forEach(step => {
+        if (step === "U") {
+            level++;
+            if (level === 0) valleyCount++;
+        }
+        else {
+            level--;
+        }
+    });
+    return valleyCount;
+}
 ```
 
 ### 설명
+
+> Counting Valleys, 골짜기에 들어간 횟수를 세는 문제로, 지표면 아래로 내려갔다 올라온 횟수를 구하는 문제이다.
+
+1. `UDDDUDDUU` 식의 문자로 들어온 입력값을 `split`하고, `forEach`로 순회한다.
+2. `U`일 경우, 현재 지표면 높이를 나타내는 변수인 `level`의 값을 증가시키고, 아닐 경우 감소시킨다.
+3. `U`을 해서 `level`이 0이 됐다면, 골짜기에 들어갔다가 지표면으로 나왔다는 뜻이 되므로 `valleyCount`또한 1 증가시킨다.
 
 ---
 
