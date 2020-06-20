@@ -70,15 +70,20 @@
 
 ### 2020.06.07(일)
 
-- [Sock Merchant](https://github.com/ProblemSolvedStudy/problem-solved/blob/master/hackerrank/sock-merchant.md)
-- [Counting Valleys](https://github.com/ProblemSolvedStudy/problem-solved/blob/master/hackerrank/counting-valleys.md)
-- [Jumping on the Clouds](https://github.com/ProblemSolvedStudy/problem-solved/blob/master/hackerrank/jumping-on-the-clouds.md)
+- [Sock Merchant](https://github.com/ProblemSolvedStudy/problem-solved/blob/master/hackerrank/warm-up/sock-merchant.md)
+- [Counting Valleys](https://github.com/ProblemSolvedStudy/problem-solved/blob/master/hackerrank/warm-up/counting-valleys.md)
+- [Jumping on the Clouds](https://github.com/ProblemSolvedStudy/problem-solved/blob/master/hackerrank/warm-up/jumping-on-the-clouds.md)
 
 ### 2020.06.13(토)
 
-- [Repeated String](https://github.com/ProblemSolvedStudy/problem-solved/blob/master/hackerrank/repeated-string.md)
-- [2D Array - DS](https://github.com/ProblemSolvedStudy/problem-solved/blob/master/hackerrank/2d-array-ds.md)
-- [Arrays: Left Rotation](https://github.com/ProblemSolvedStudy/problem-solved/blob/master/hackerrank/array-left-rotation.md)
+- [Repeated String](https://github.com/ProblemSolvedStudy/problem-solved/blob/master/hackerrank/warm-up/repeated-string.md)
+- [2D Array - DS](https://github.com/ProblemSolvedStudy/problem-solved/blob/master/hackerrank/arrays/2d-array-ds.md)
+- [Arrays: Left Rotation](https://github.com/ProblemSolvedStudy/problem-solved/blob/master/hackerrank/arrays/array-left-rotation.md)
+
+### 2020.06.20(토)
+
+- [New Year Chaos](https://github.com/ProblemSolvedStudy/problem-solved/blob/master/hackerrank/arrays/new-year-chaos.md)
+- [Minimum Swaps 2](https://github.com/ProblemSolvedStudy/problem-solved/blob/master/hackerrank/arrays/minimum-swaps-2.md)
 
 </p>
 </details>
