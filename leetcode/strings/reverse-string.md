@@ -21,9 +21,14 @@ const reverseString = (s) => s.reverse();
 ### 풀이
 
 ```js
+var reverseString = function (s) {
+  return s.reverse();
+};
 ```
 
 ### 설명
+
+전달되는 s 인자는 Array이며 reverse 메서드를 사용해서 해결했다.
 
 ## Reese
 
