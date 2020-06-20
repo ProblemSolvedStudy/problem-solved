@@ -8,7 +8,7 @@
 
 ```js
 const singleNumber = (nums) => {
-	return nums.reduce((accu, curr) => accu ^ curr);
+  return nums.reduce((accu, curr) => accu ^ curr);
 };
 ```
 
@@ -27,9 +27,18 @@ XOR은 숫자를 2진수로 변환해 각 숫자가 같으면 0, 다르면 1로 
 ### 풀이
 
 ```js
+let singleNumber = function (nums) {
+  let result = 0;
+  for (let i = 0; i < nums.length; i++) {
+    result = result ^ nums[i];
+  }
+  return result;
+};
 ```
 
 ### 설명
+
+주어지는 array를 기준으로 for문을 순회했고 중복되는 숫자를 XOR 연산자를 활용해서 result에 값에 담아줬다.
 
 ## Reese
 
@@ -37,9 +46,11 @@ XOR은 숫자를 2진수로 변환해 각 숫자가 같으면 0, 다르면 1로 
 
 ```js
 var singleNumber = function (nums) {
-	const onlyUnique = new Set();
-	nums.forEach((num) => (!onlyUnique.has(num) ? onlyUnique.add(num) : onlyUnique.delete(num)));
-	return [...onlyUnique][0];
+  const onlyUnique = new Set();
+  nums.forEach((num) =>
+    !onlyUnique.has(num) ? onlyUnique.add(num) : onlyUnique.delete(num)
+  );
+  return [...onlyUnique][0];
 };
 ```
 
@@ -63,12 +74,12 @@ var singleNumber = function (nums) {
 
 ```js
 var singleNumber = function (nums) {
-	const unique = new Set();
-	for (let i = 0; i < nums.length; i++) {
-		if (unique.has(nums[i])) unique.delete(nums[i]);
-		else unique.add(nums[i]);
-	}
-	return [...unique];
+  const unique = new Set();
+  for (let i = 0; i < nums.length; i++) {
+    if (unique.has(nums[i])) unique.delete(nums[i]);
+    else unique.add(nums[i]);
+  }
+  return [...unique];
 };
 ```
 
