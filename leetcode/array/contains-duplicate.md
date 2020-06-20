@@ -8,8 +8,8 @@
 
 ```js
 const containsDuplicate = (nums) => {
-	const set = new Set(nums);
-	return set.size !== nums.length;
+  const set = new Set(nums);
+  return set.size !== nums.length;
 };
 ```
 
@@ -26,9 +26,18 @@ const containsDuplicate = (nums) => {
 ### 풀이
 
 ```js
+const containsDuplicate = (nums) => {
+  const sorting = nums.sort();
+  const result = sorting.some((el, idx) => {
+    return el === nums[idx - 1];
+  });
+  return result;
+};
 ```
 
 ### 설명
+
+일단 편한 중복 검사를 위해서 nums array를 sort 했다. 그 이후에 sort한 Array를 돌면서 some method를 사용했고 그 결과를 return 했다.
 
 ## Reese
 
@@ -36,8 +45,8 @@ const containsDuplicate = (nums) => {
 
 ```js
 var containsDuplicate = function (nums) {
-	const mySet = new Set(nums);
-	return mySet.size !== nums.length;
+  const mySet = new Set(nums);
+  return mySet.size !== nums.length;
 };
 ```
 
@@ -52,12 +61,12 @@ Hoo, Ed와 동일한 방법으로 풀었다😅<br />
 
 ```js
 var containsDuplicate = function (nums) {
-	const table = {};
-	for (let i = 0, len = num.length; i < len; i++) {
-		table[nums[i]] = table[nums[i]] + 1 || 1;
-		if (table[nums[i]]) return true;
-	}
-	return false;
+  const table = {};
+  for (let i = 0, len = num.length; i < len; i++) {
+    table[nums[i]] = table[nums[i]] + 1 || 1;
+    if (table[nums[i]]) return true;
+  }
+  return false;
 };
 ```
 
@@ -70,7 +79,7 @@ var containsDuplicate = function (nums) {
 
 ```js
 var containsDuplicate = function (nums) {
-	return nums.length !== new Set(nums).size;
+  return nums.length !== new Set(nums).size;
 };
 ```
 
