@@ -25,9 +25,23 @@ leetcode에서는 추가 메모리를 사용하면 안됐기 때문에 하나씩
 ### 풀이
 
 ```js
+function rotLeft(a, d) {
+  const arr = Array.from({ length: a }, (v, i) => i + 1);
+
+  for (let i = 0; i < d; i++) {
+    arr.push(arr.shift());
+  }
+  return arr;
+}
 ```
 
 ### 설명
+
+left-rotation 문제는 일단 저번에 풀었던 문제 형식이지만 이번에는 문제 접근을 좀 잘못했다.
+
+a가 array의 length가 전달되는줄 알았고 d가 left rotation의 count로 생각했는데 알고보니까 a는 그냥 array그 자체로 전달되는 거였다 ....
+
+const arr = Array.from({ length: a }, (v, i) => i + 1); 전달된 Number 인자를 Array Type으로 변환해 주는 식만 제거하면 문제 통과를 잘 한다.
 
 ## Reese
 
