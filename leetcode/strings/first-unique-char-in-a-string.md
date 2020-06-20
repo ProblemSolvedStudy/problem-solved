@@ -44,9 +44,22 @@ const firstUniqChar = (s) => {
 ### 풀이
 
 ```js
+var firstUniqChar = function (s) {
+  for (i = 0; i < s.length; i++) {
+    const first = s.indexOf(s[i]);
+    const last = s.lastIndexOf(s[i]);
+    if (first === last) {
+      return i;
+    }
+  }
+  return -1;
+};
 ```
 
 ### 설명
+
+주어진 인자 s에 대해서 첫번째 index의 값과 마지막 인덱스의 값을 for문만큼 계산해서 만약에 first와 last가 일치한다면 순환중인 i 값을 return 하도록 하고
+for문을 다 돌아도 중복이 없다면 -1을 return 하도록 문제를 풀었다.
 
 ## Reese
 
@@ -62,7 +75,9 @@ var firstUniqChar = function (s) {
   const arr = s.split("");
 
   for (let i = 0, len = arr.length; i < len; i++) {
-    table.has(arr[i]) ? table.set(arr[i], table.get(arr[i]) + 1) : table.set(arr[i], 1);
+    table.has(arr[i])
+      ? table.set(arr[i], table.get(arr[i]) + 1)
+      : table.set(arr[i], 1);
   }
 
   for (let [key, value] of table.entries()) {
