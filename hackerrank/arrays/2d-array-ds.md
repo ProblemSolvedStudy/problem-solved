@@ -38,9 +38,35 @@ function hourglassSum(arr) {
 ### 풀이
 
 ```js
+function hourglassSum(arr) {
+  const hourglassSumList = [];
+  const count = arr.length - 2;
+
+  for (let i = 1; i <= count; i++) {
+    for (let j = 1; j <= count; j++) {
+      let sum = 0;
+      sum += arr[i - 1][j - 1] + arr[i - 1][j] + arr[i - 1][j + 1];
+      sum += arr[i][j];
+      sum += arr[i + 1][j - 1] + arr[i + 1][j] + arr[i + 1][j + 1];
+
+      hourglassSumList.push(sum);
+    }
+  }
+
+  return Math.max(...hourglassSumList);
+}
 ```
 
 ### 설명
+
+6 \* 6의 이챠원 배열이 주어지고 계산가능한 모든 모례시계들의 합을 구해서 가장 큰 값을 찾아내는 문제다.
+일단 이 문제는 풀지 못했지만 Hoo와 Reese가 조언을 해준 덕분에 풀 수 있었다.
+첫번째 오류는 이차원 배열의 모래시계 형태에 0이 아닌 정수나 음수의 형태로 들어가 있어야만 모래시계라고 판단하고 값을 구하는 줄 알았다.
+하지만 문제의 조건은 만들어 질 수 있는 모든 모래시계의 형태를 계산하면 되는 문제였다 ....
+
+1. 편의를 위해서 1번째 index부터 for문을 순회하도록 했다. 0번째 index는 이차원 배열에서 모래시계의 형태를 만들 수 없기 때문이다.
+2. 이중 for문을 이용해서 모든 모래시계의 Sums을 구하도록 했고 위와 같이 마지막 index 역시 모래시계의 형태를 만들 수 없으니 arr.length - 2 만큼만 반복문을 순회하도록 했다.
+3. 결과값들을 array에 계속해서 저장하고 Math.max를 활용해서 가장 큰 값을 return 하도록 했다.
 
 ## Reese
 
@@ -49,6 +75,7 @@ function hourglassSum(arr) {
 ```js
 function hourglassSum(arr) {
   const sums = [];
+
   for (let i = 1, lastArrIdx = arr.length - 2; i <= lastArrIdx; i++) {
     for (let j = 1, lastElIdx = arr[0].length - 2; j <= lastElIdx; j++) {
       let sum = 0;
