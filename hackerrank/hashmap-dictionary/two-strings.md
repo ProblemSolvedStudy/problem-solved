@@ -87,9 +87,33 @@ function twoStrings(s1, s2) {
 ### 풀이
 
 ```js
+function twoStrings(s1, s2) {
+  const onlyUniqueS1 = new Set(s1);
+  for (let i = 0, len = s2.length; i < len; i++) {
+    if (onlyUniqueS1.has(s2[i])) {
+      return "YES";
+    }
+  }
+  return "NO";
+}
 ```
 
 ### 설명
+
+`onlyUniqueS1`에 s1의 유일한 문자들만을 담은 Set을 할당하고, s2 문자열을 순회하면서 `onlyUniqueS1`에 특정 문자열이 포함되어 있는지를 확인했다. 만약 하나라도 포함되어있을 경우 즉시 "YES"를 리턴하고 순회가 종료되어 일치하는 문자가 하나도 없을 경우엔 "NO"를 리턴한다.  
+이 문제의 경우 자바스크립트의 `Array.prototype.some` 메소드를 쓰기에 적절한 것 같아 (휴이's 아이디어!) `some` 메소드를 써서 구현해본다면 다음과 같이 리팩토링 해볼 수 있다.
+
+> cf) `some`은 callback이 참(불린으로 변환했을 때 true가 되는 값)을 반환하는 요소를 찾을 때까지 배열에 있는 각 요소에 대해 한 번씩 callback 함수를 실행한다.
+
+```js
+function twoStrings(s1, s2) {
+  const onlyUniqueS1 = new Set(s1);
+  const hasCommonString = (currLetter) => onlyUniqueS1.has(currLetter);
+  return s2.split("").some(hasCommonString) ? "YES" : "NO";
+}
+```
+
+<br />
 
 ## Ed
 
