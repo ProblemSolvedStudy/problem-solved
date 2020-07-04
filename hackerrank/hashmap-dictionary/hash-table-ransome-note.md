@@ -63,10 +63,36 @@ function checkMagazine(magazine, note) {
 
 ### 풀이
 
+1.
+
 ```js
+function checkMagazine(magazine, note) {
+  const wordMapOfMagazine = new Map();
+  magazine.forEach((word) =>
+    wordMapOfMagazine.has(word)
+      ? wordMapOfMagazine.set(word, wordMapOfMagazine.get(word) + 1)
+      : wordMapOfMagazine.set(word, 1)
+  );
+
+  for (let i = 0, len = note.length; i < len; i++) {
+    if (wordMapOfMagazine.has(note[i])) {
+      if (wordMapOfMagazine.get(note[i]) === 0) return console.log("No");
+      wordMapOfMagazine.set(note[i], wordMapOfMagazine.get(note[i]) - 1);
+    } else {
+      return console.log("No");
+    }
+  }
+
+  return console.log("Yes");
+}
 ```
 
 ### 설명
+
+magazine에 들어있는 string들의 갯수를 임의의 Map `wordMapOfMagazine`에 맵핑한 후, note 배열을 순회하면서 (1) `wordMapOfMagazine`에 해당하는 string이 키값이 존재하는지를 확인하고, (2) 키값이 존재할 경우 그 갯수를 1 차감해서 0인지 아닌지를 판별했다.  
+string 키값이 존재하지 않거나 string의 갯수가 0일 경우 경우 "No"를 early return 해주고, early return 없이 note 배열 순회를 완료했을 경우 magazine에 들어있는 string을 사용해서 note 내용을 전부 만들 수 있다는 의미이기 때문에 "Yes"를 return한다.
+
+<br />
 
 ## Ed
 
