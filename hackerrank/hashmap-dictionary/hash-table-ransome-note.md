@@ -55,9 +55,26 @@ function checkMagazine(magazine, note) {
 ### 풀이
 
 ```js
+function checkMagazine(magazine, note) {
+  const memo = {};
+
+  magazine.forEach((el) => {
+    !memo[el] ? (memo[el] = 1) : (memo[el] = memo[el] + 1);
+  });
+
+  for (let i = 0; i < note.length; i++) {
+    if (!memo[note[i]]) return console.log("No");
+    else memo[note[i]] = memo[note[i]] - 1;
+  }
+  return console.log("Yes");
+}
 ```
 
 ### 설명
+
+1. memo 객체를 선언한 후 magazine.forEach를 통해서 값이 없다면 1을 할당해 주고 값이 있다면 해당 값에 count를 1 더해서 반복문을 순회한다.
+2. for문을 통해서 만약에 memo[note[i]] 값이 false라면 NO를 return하고 true라면 객체에서 해당 key값에 count를 -1 해준다.
+3. 반복문을 모두 통과한다면 note의 배열의 구성은 magazine에 전부 포함되 있다는 가정을 할 수 있으며 Yes를 return 한다.
 
 ## Reese
 
