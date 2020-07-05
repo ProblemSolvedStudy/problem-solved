@@ -78,9 +78,29 @@ function twoStrings(s1, s2) {
 ### 풀이
 
 ```js
+function twoStrings(s1, s2) {
+  let set = new Set();
+  const _s1 = s1.split("");
+
+  _s1.forEach((el) => set.add(el));
+
+  for (let i = 0; i < s2.length; i++) {
+    if (set.has(s2[i])) {
+      return "YES";
+    }
+  }
+  return "NO";
+}
 ```
 
 ### 설명
+
+1. Set 구조에 String Type의 s1을 배열화 한 후 저장함.
+2. s2의 길이 만큼 for문을 순회하면서 Set에서 일치하는 값이 있다면 "YES"를 return
+3. 만약에 for문을 다 순회해도 일치하는 값이 없다면 함수는 "No"를 return 한다.
+
+위에 함수 식에서 split을 써서 배열로 만든 후 forEach를 통해서 Set에 담아 줬지만 const set = new Set( ...s1 ); 이런 식으로 spread operator를 사용하면
+좀 더 간결하게 식을 표현할 수 있다는 걸 다른 팀원들의 풀이를 통해서 알았다.
 
 ## Reese
 
