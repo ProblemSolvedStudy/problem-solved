@@ -116,9 +116,38 @@ string 키값이 존재하지 않거나 string의 갯수가 0일 경우 경우 "
 ### 풀이
 
 ```js
+function checkMagazine(magazine, note) {
+    let answer = "Yes";
+
+    const magazineMap = new Map();
+    magazine.forEach(word => {
+        const wordValue = magazineMap.get(word);
+        magazineMap.set(word, wordValue ? wordValue + 1 : 1);
+    });
+
+    for(let i = 0; i < note.length; i++) {
+        const wordValue = magazineMap.get(note[i]);
+        if (wordValue) magazineMap.set(note[i], wordValue - 1);
+        else {
+            answer = "No";
+            break;
+        }
+    };
+
+    console.log(answer);
+}
 ```
 
+> magazine에 있는 문자들로 note의 문자를 구성할 수 있는지 판별하는 문제. magazine의 문자는 갯수만큼만 사용할 수 있다.
+
 ### 설명
+
+1. 빈 Map `magazineMap`을 만든다.
+2. magazine을 forEach문으로 순회하며, magazineMap의 `get` 메서드로 해당 단어가 저장돼있는지 아닌지 확인한다.
+3. 없을 경우 해당 value를 1로 새로 `set`하고, 있을 경우 value를 기존 값에서 1 증가시킨다.
+4. note 배열을 순회하며, 인덱스에 해당하는 문자(`note[i]`)를 magazineMap에서 get 메서드를 통해 찾은 후 `wordValue`에 저장한다.
+5. wordValue가 존재할 경우 해당 문자의 value를 1 감소시킨다.
+6. 애초에 `note[i]`에 해당하는 wordValue 자체가 없거나, 혹은 wordValue의 값이 0인 경우 `No`를 리턴한다. `No`가 아닐경우 `Yes`를 리턴한다.
 
 ---
 
