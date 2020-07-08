@@ -14,7 +14,24 @@
 ### 풀이
 
 ```js
+function twoStrings(s1, s2) {
+  const ss = [...s2];
+  let rs = "YES";
+  [...s1].forEach((i, index) => {
+    if(i.indexOf(ss[index]) === 0 ){
+      return console.log(rs);
+    } else {
+      rs ="NO"
+    }
+  })
+  return console.log(rs)
+}
 ```
+
+### 설명
+스트링으로 들어온 인자를 확장 연산자를 사용하여서 배열에 담아주었다. 이 경우 단점은 중복되는 키값이 존재하여서 좋지 않은 방법인것같다.
+foreach를 돌면서 2번째 인자로 들어온 스트링과 비교하면서 indexOf로 체크해주었다, 
+some을 사용하면 조금더 코드가 간결하게 
 
 ## Hoo
 
