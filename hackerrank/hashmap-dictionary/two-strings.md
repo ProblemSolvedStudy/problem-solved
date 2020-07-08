@@ -140,9 +140,28 @@ function twoStrings(s1, s2) {
 ### 풀이
 
 ```js
+function twoStrings(s1, s2) {
+    const wordSet = new Set(s1.split(""));
+    for (let i = 0; i < s2.length; i++) {
+        if (wordSet.has(s2[i])) return "YES";
+    }
+    return "NO";
+}
 ```
 
+```js
+function twoStrings(s1, s2) {
+    const wordSet = new Set(s1);
+    return [...s2].some(word => wordSet.has(word)) ? "YES" : "NO";
+}
+```
+
+> 두 개의 문자열(s1, s2)가 공통되는 문자를 가지고 있는지 판별하는 문제
+
 ### 설명
+
+- 첫번째 풀이 : 첫번째 문자열을 split해서 `wordSet`에 담는다. 이 후 두번째 문자열을 for문으로 순회하면서, `Set.prototype.has`문을 거쳐 하나라도 겹치는 문자가 있을 경우 YES, 그 외 NO를 반환한다.
+- 두번째 풀이 : 문자열 하나를 Set에 넣을 경우 알아서 split해서 들어간다고 한다! for문 대신 `Array.prototype.some`을 사용해서, for문을 훨씬 간결하고 선언적으로 나타냈다. some은 배열의 메서드이기 때문에, 문자열(s2)을 배열로 변경해야 한다. `split` 대신 spread 연산자를 사용해서 배열로 변경해봤다.
 
 ---
 
