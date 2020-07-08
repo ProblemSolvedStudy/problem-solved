@@ -14,7 +14,27 @@
 ### 풀이
 
 ```js
+function checkMagazine(magazine, note) {
+   const fs = magazine.split(" ")
+   const ss = note.split(" ")
+   console.log(fs, ss)
+   let result = "yes"
+   for(let i = 0; ss.length > i; i++) {
+     index = fs.indexOf(ss[i])
+     console.log(index)
+     if(index === -1) {
+       result = "no"
+       break
+     } else {
+       result = "yes"
+     }
+   }
+   return console.log(result);
+ }
 ```
+### 설명
+한글자씩 잘라서 배열로 넣은다음에 반목문을 돌면서 indexOf로 단어가 포함되어있는지 확인하면서 있다면 바로 리턴을 해주도록 하였다.
+배열로 넣을필요가 없었는데 해당 사이트에서 풀지 않고 js파일을 만들어서 불필요한 코드가 추가되었다.
 
 ## Hoo
 
