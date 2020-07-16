@@ -21,9 +21,43 @@
 ### 풀이
 
 ```js
+function countTriplets(arr, r) {
+  let m2 = new Map();
+  let m3 = new Map();
+  let total = 0;
+
+  arr.forEach((val) => {
+    if (m3.has(val)) total += m3.get(val);
+    if (m2.has(val)) m3.set(val * r, m3.get(val) ? m3.get(val) + m2.get(val) : m2.get(val));
+    m2.set(val, m2.get(val * r) ? m2.get(val * r) + 1 : 1);
+  });
+
+  return total;
+}
 ```
 
 ### 설명
+
+> 배열 안에서 연속해서 등장하는 r의 n제곱 3개의 숫자가 몇 쌍이 되는지 구하는 문제
+
+- 문제 접근하기가 어려워서 파이썬으로 간단하게 푸신 분의 풀이를 참고했다.
+- 풀이 설명은 아래 블로그를 참고하면 되고, 나는 그 풀이를 어떻게 이해했는지 작성해 보겠다.
+
+아래는 `arr: 1 2 2 4, r: 2`일 때 풀이의 Map 변화 상황이다.
+
+```plain
+m2:  Map { 2 => 1 }                 m3:  Map {} // 0
+m2:  Map { 2 => 1, 4 => 1 }         m3:  Map { 4 => 1 } // 1
+m2:  Map { 2 => 1, 4 => 2 }         m3:  Map { 4 => 2 } // 3
+m2:  Map { 2 => 1, 4 => 2, 8 => 1 } m3:  Map { 4 => 2, 8 => 2 } //4
+```
+
+1. 먼저 3개의 쌍 중 첫번째 값에 의해 m2에 값이 들어간다.
+2. m2에 값이 생기게 되면서 m3에도 그에 의해 값이 들어간다.
+3. m3에 있는 값이 total에 누적된다.
+
+- m2와 m2 값을 보면 기존 배열에 있지 않은 8이 있는 것을 볼 수 있다. 이는 개수를 세기 위함이고, 실제로는 2를 나눠서 보면 원래의 개수가 나오게 된다.
+- 설명을 보면 대충 이해가 가는데 이렇게 여러 Map을 사용해야 하는 문제는 접근방식이 잘 생각나지 않아 고민을 많이 해야겠다.
 
 ## Hoi
 
@@ -188,3 +222,5 @@ function countTriplets(arr, r) {
 ---
 
 ## 참고자료
+
+- https://monthlywoongah.tistory.com/80
