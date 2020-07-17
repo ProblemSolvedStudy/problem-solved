@@ -75,9 +75,35 @@ function freqQuery(queries) {
 ### 풀이
 
 ```js
+function freqQuery(queries) {
+  const ds = new Map();
+  const result = [];
+
+  const ops = {
+    1: (data) => {
+      const value = ds.get(data); // O(n) (worst)
+      ds.set(data, value ? value + 1 : 1);
+    },
+    2: (data) => {
+      const value = ds.get(data); // O(n) (worst)
+      if (value) {
+        ds.set(data, value - 1);
+      }
+    },
+    3: (freq) => result.push([...ds.values()].some((data) => data === freq) ? 1 : 0), // O(n^2) (worst)
+  };
+
+  queries.forEach(([op, data]) => ops[op](data)); // O(n)
+
+  return result;
+}
 ```
 
 ### 설명
+
+1, 2, 3 operation 처리 로직을 `ops` 객체에 명시해두고 `queries` 인자를 순회하면서 요청을 처리해주었다.
+
+<br />
 
 ## Ed
 
