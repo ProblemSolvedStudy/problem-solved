@@ -114,20 +114,20 @@ function isValid(s) {
              countDict[Object.keys(countDict)[1]] == 1 ) {
               
             /* 조건문 설명
-                -> 'aaabbcccdd' 가 입력되었다고 가정 할 때,
-                   Object.keys(countDict)[0] 는 2 가 되고 Object.keys(countDict)[1]  3이 됨.
+                -> 'aaabbccdd' 가 입력되었다고 가정 할 때,
+                   Object.keys(countDict)[0] 는 2 가 되고 (bb,cc,dd) Object.keys(countDict)[1] 3 이 됨 (aaa).
                    (Object.keys(countDict)[1] - Object.keys(countDict)[0]) == 1 을 만족)
                    
-                   반복 횟수가 1 차이 날 때 포함 횟수가 하나 더 많은 a 를 하나 빼주면 
+                   반복 횟수가 1 차이 날 때 포함 횟수가 많은것이 1개이고 거기서 하나를 빼줘 1이 된다면 (aaa 에서 a 하나 제거)
                    모든 요소의 반복 횟수가 2가 되는것을 만족함.
                    (countDict[Object.keys(countDict)[1]] == 1 을 만족)
                    
                    
-                   'aabbccdde' 가 입력되었다고 가정 할 때,
-                   Object.keys(countDict)[0] 는 2 가 되고 Object.keys(countDict)[1] 이 되는것은 위와 동일하지만
-                   countDict[Object.keys(countDict)[1]] 이 1 이 아닌 4 가 되므로 (aa, bb, cc, dd -> 4 개),
-                   총 4개의 글자를 제거해야 만족하는 문자열이 되기 때문에 최대 1개만 제거 가능하다는 제약에 어긋난다.
-            /*
+                   'aabbccdddeee' 가 입력되었다고 가정 할 때,
+                   Object.keys(countDict)[0] 는 2 가 되고 Object.keys(countDict)[1] 3 이 되는것은 위와 동일하지만
+                   countDict[Object.keys(countDict)[1]] 이 1 이 아닌 2 가 되므로 (ddd,eee 2개),
+                   총 2개의 글자 (d,e ) 를 제거해야 만족하는 문자열이 되기 때문에 최대 1개만 제거 가능하다는 제약에 어긋난다.
+            */
             
             return "YES";
         }
@@ -147,7 +147,7 @@ function isValid(s) {
                    countDict[Object.keys(countDict)[0]] 는 6 (a,b,c,d,e,f) 이고 
                    countDict[Object.keys(countDict)[1]] 는 1 (ggg) 이지만
                    a,b,c,d,e,f 중 하나를 지운다고 모든 알파벳의 빈도를 맞출 수 없고,
-                   3개가 있는 ggg 에서 하나를 지우더라도 나머지 알파벳처럼 1개가 되지 못하여 
+                   3개가 있는 ggg 에서 하나를 지우더라도 나머지 알파벳처럼 1개가 되지 못하여 (ggg -> gg) 
                    해당 else if 조건식을 충족하지 못한다.
                
             */
