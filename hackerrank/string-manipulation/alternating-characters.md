@@ -7,6 +7,52 @@
 ### 풀이
 
 ```js
+function alternatingCharacters(s) {
+    let answer = 0;
+    let char = '';
+
+    for ( let i = 0 ; i < s.length ; i++) {
+        if ( char == s[i] ) {
+            ++answer;
+        }
+        else {
+            char = s[i];
+        }
+    }
+
+    return answer;
+}
+```
+
+### 설명
+#### 문제 해석
+> a 와 b 만 포함된 문자열이 주어지는데, 일치하는 인접 문자가 없는 문자열로 변화시키기 위해서 삭제해야 할 최소 문자 갯수를 반환하는 함수를 작성.
+
+#### 코드
+* 사전 작업
+1. 기준 문자로 다루기 위한 char 변수를 설정.
+2. 기준 문자가 유지될때 일치하는 인접 문자로 판단하여 지워져야 할 문자 갯수 카운트를 위한 answer 변수를 설정.
+
+* 코드 설명
+1. 0번째 인덱스부터 검사를 한다.
+    1-1. 만약 기준 문자가 i 번째 인덱스의 문자와 일치한다면
+    -> 지워야할 문자 갯수를 카운트하는 변수의 크기를 1 증가
+    1-2. 그렇지 않다면
+    -> 기준 문자를 i 번째 인덱스의 문자로 변경 (인접한 글자가 다른 글자이기 때문)
+
+#### 시간 복잡도
+> O(N)
+
+문자열 s 의 처음부터 마지막까지 순회를 하므로 **O(N)** 의 시간 복잡도를 갖는다.
+
+#### 기타
+String 을 Array 처럼 Handling 할 수 있다.
+
+```js
+const testString = 'testString';
+
+console.log(testString[0]); // t
+console.log(testString.length); //10
 ```
 
 ## Huey
