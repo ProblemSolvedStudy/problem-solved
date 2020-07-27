@@ -7,7 +7,33 @@
 ### 풀이
 
 ```js
+function twoStrings(s1, s2) {
+    const dictionary = {};
+
+    for ( let i = 0 ; i < s1.length ; ++i ) {
+        if ( !dictionary[s1[i]] ) dictionary[s1[i]] = true;
+    }
+
+    for ( let i = 0 ; i < s2.length ; ++i ) {
+        if ( dictionary[s2[i]] ) return "YES";
+    }
+
+    return "NO";
+}
 ```
+
+### 설명
+
+#### 문제 해석
+> s2 의 문자중에서 s1 의 문자열에 포함되는 문자가 있는지 확인.
+
+#### 코드 설명
+- 첫번째 for 문에서 s1 의 문자들의 출현 여부를 dictionary 에 저장
+  - ex) hello -> {'h': true, 'e': true, 'l': true, 'o': true}
+- 두번째 for 문에서 s2 의 각 문자가 dictionary 에 저장 되어있는지 확인
+  - 저장이 되어 있다면 'YES' 를 리턴
+  - 그렇지 않다면 다음 문자 확인
+- 두번째 for 문을 순회 할 때까지 리턴이 되지 않았다면 s2 의 모든 문자가 dictionary 에 저장되어있지 않다는 뜻이므로 'NO' 를 리턴
 
 ## Huey
 
