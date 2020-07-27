@@ -7,7 +7,48 @@
 ### 풀이
 
 ```js
+function checkMagazine(magazine, note) {
+    const dictionary = {};
+
+    for ( let i = 0 ; i < magazine.length ; ++i ) {
+        if ( !dictionary[magazine[i]] ) dictionary[magazine[i]] = 1;
+        else dictionary[magazine[i]] += 1;
+    }
+
+    for ( let i = 0 ; i < note.length ; ++i ) {
+        const word = note[i];
+
+        if ( dictionary[word] > 1 ) {
+            dictionary[word] -= 1;
+        }
+        else if ( dictionary[word] == 1 ) {
+            dictionary[word] = undefined;
+        }
+        else {
+            console.log("No");
+            return;
+        }
+    }
+
+    console.log("Yes");
+    return;
+}
 ```
+
+### 설명
+
+#### 문제 해석
+> note 의 단어들이 전부 magazine 에 포함되는지 확인하는 문제.
+
+#### 코드 설명
+- 첫번째 for 문에서는 magazine 의 단어 출연 횟수를 dictionary 에 저장한다.
+  - ex. ['give', 'me', 'one', 'grand', 'today', 'night'] -> { give: 1, me: 1, one: 1, grand: 1, today: 1, night: 1 }
+- 두번째 for 문에서는 note 의 각 단어에 대해 dictionary 를 검사한다.
+  - dictionary 에서 note 의 i 번째 인덱스에 해당하는 단어를 2개 이상 갖고 있다면 dictionary 에서 해당 문자열 카운트를 1 차감
+  - dictionary 에서 note 의 i 번째 인덱스에 해당하는 단어를 1개 갖고 있다면 dictionary 의 해당 문자열에 대한 정보를 undefined 로 처리
+  - dictionary 에서 note 의 i 번째 인덱스에 해당하는 단어를 갖고 있지 않다면 콘솔에 'No' 출력 후 종료
+- 두번째 for 문에서 else 분기가 처리되지 않았다는것은 magazine 이 note 의 단어를 전부 포함하고 있다는 뜻이므로 'Yes' 출력 후 종료 
+
 
 ## Huey
 
