@@ -37,7 +37,10 @@ function isValid(s) {
       countDict[Object.keys(countDict)[1]] == 1
     )
       return "YES";
-    else if (Object.keys(countDict)[0] == 1 && countDict[Object.keys(countDict)[0]] == 1)
+    else if (
+      Object.keys(countDict)[0] == 1 &&
+      countDict[Object.keys(countDict)[0]] == 1
+    )
       return "YES";
     else return "NO";
   }
@@ -132,7 +135,10 @@ function isValid(s) {
             */
 
       return "YES";
-    } else if (Object.keys(countDict)[0] == 1 && countDict[Object.keys(countDict)[0]] == 1) {
+    } else if (
+      Object.keys(countDict)[0] == 1 &&
+      countDict[Object.keys(countDict)[0]] == 1
+    ) {
       /* 조건문 설명
                ->  'aaaabbbbccccdddde' 가 입력되었다고 가정 할 때,
                    Object.keys(countDict)[0] 는 1이 되고 Object.keys(countDict)[1] 는 4가 된다.
@@ -208,8 +214,12 @@ function isValid(s) {
   let fMap = new Map(); // 2
   let dCnt = 0; // 3
 
-  [...s].forEach((v) => (cMap.get(v) ? cMap.set(v, cMap.get(v) + 1) : cMap.set(v, 1))); // 4
-  [...cMap.values()].forEach((v) => (fMap.get(v) ? fMap.set(v, fMap.get(v) + 1) : fMap.set(v, 1))); // 5
+  [...s].forEach((v) =>
+    cMap.get(v) ? cMap.set(v, cMap.get(v) + 1) : cMap.set(v, 1)
+  ); // 4
+  [...cMap.values()].forEach((v) =>
+    fMap.get(v) ? fMap.set(v, fMap.get(v) + 1) : fMap.set(v, 1)
+  ); // 5
 
   if ([...s].every((v, i, arr) => v === arr[0])) return "YES"; // 6
 
@@ -259,9 +269,51 @@ function isValid(s) {
 ### 풀이
 
 ```js
+function isValid(s) {
+const store = new Map();
+let counter = 0;
+
+[...s].forEach((el) => {
+    if(store.get(el)) {
+      store.set(el, store.get(el) + 1);
+    } else {
+      store.set(el , 1);
+    }
+})
+// 분류한 Map을 Array에 넣는다.
+// 기준이 되는 값을 찾는다.
+const filter = new Set(s);
+const filter_arr = [...filter];
+const filter_result = [];
+
+for(let i = 0; i < filter_arr.length; i++) {
+    filter_result.push(store.get(filter_arr[i]));
+}
+
+const filter_result_sort = filter_result.sort((a , b) => {
+    return a - b;
+})
+
+for(let i = 0; i < filter_result_sort.length - 1 ; i++) {
+    if(filter_result_sort[i] !== filter_result_sort[i + 1]) {
+        counter++;
+    }
+}
 ```
 
 ### 설명
+
+- 1개의 요소만 수정했을 때 anagram이 완성될 수 있는지를 판별하는 문제
+
+- 주어진 문자열에 대해서 Map구조에 "스펠링" : Count의 형식으로 저장합니다.
+- Set구조에 Map에 저장된 Key의 Value를 이동시킵니다.
+- Array 구조에 담고 Sort를 해줍니다.
+- Array를 순회하면서 Current요소와 Next 요소를 비교하면서 Counter 변수를 증가시키고 Counter의 값이 1보다 크다면 "No"를 Return하게 합니다.
+
+> 문제를 해결하지 못한 큰 실수
+
+- [2,2,2,2,1,1,1,1] 이런식으로 Array에 Value들이 담길 경우에는 수정해야 하는 요소가 1개가 넘으므로 "No"를 Return해야 합니다.
+- 하지만 저의 구현식의 경우에는 Current와 Next를 비교하기 때문에 위 배열같은 경우에는 Counter가 1이 나오게 되고 "Yes"로 오답이 나오게 됩니다.
 
 ## Reese
 

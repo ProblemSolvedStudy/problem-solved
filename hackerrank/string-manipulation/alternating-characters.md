@@ -96,9 +96,20 @@ function alternatingCharacters(s) {
 ### 풀이
 
 ```js
+function alternatingCharacters(s) {
+  let count = 0;
+  for (let i = 0; i < s.length - 1; i++) {
+    if (s[i] === s[i + 1]) count++;
+  }
+  return count;
+}
 ```
 
 ### 설명
+
+- 반복문을 돌면서 Current와 Next를 비교합니다.
+- 맨 마지막 요소는 Next가 없기 때문에 length의 -1 까지만 반복문을 순회 합니다.
+- Current와 Next가 같다면 count 변수의 값을 증가시키고 반복문을 전부 다 순회한 후 count를 return 합니다.
 
 ## Reese
 
