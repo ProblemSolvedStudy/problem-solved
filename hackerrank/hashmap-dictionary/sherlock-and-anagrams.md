@@ -7,7 +7,57 @@
 ### 풀이
 
 ```js
+function sherlockAndAnagrams(s) {
+    let answer = 0;
+
+    for ( let i = 1 ; i < s.length ; ++i ) {
+        const dictionary = {};
+        const firstStr = s.slice(0, i);
+        const sortedStr = sortAlphabets(firstStr);
+        
+        for ( let j = 0 ; j < s.length - i + 1 ; ++j ) {
+            const slicedStr = s.slice(j, j + i);
+            const sortedStr = sortAlphabets(slicedStr);
+
+            if ( !dictionary[sortedStr] ) dictionary[sortedStr] = 1;
+            else dictionary[sortedStr] += 1;
+        }
+
+        for ( let k = 0 ; k < Object.keys(dictionary).length ; ++k ) {
+            if ( dictionary[Object.keys(dictionary)[k]] > 1) {
+                answer += combinations(dictionary[Object.keys(dictionary)[k]], 2);
+            }
+        }
+    }
+
+    return answer;
+}
+
+function sortAlphabets(str) {
+    return [...str].sort((a, b) => a.localeCompare(b)).join("");
+}
+
+function product_Range(a,b) {
+    var prd = a, i = a;
+
+    while ( i++ < b ) {
+        prd *= i;
+    }
+    
+    return prd;
+}
+
+function combinations(n, r) 
+{
+    if ( n ==r ) return 1;
+    else {
+        r = (r < n - r) ? n - r : r;
+        return product_Range(r + 1, n) / product_Range(1, n - r);
+    }
+}
 ```
+
+### 설명
 
 ## Huey
 
