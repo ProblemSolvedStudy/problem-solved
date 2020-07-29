@@ -57,7 +57,7 @@ function isValid(s) {
   /*  const dict
         형식: Map (ES6) 객체 레퍼런스.
         설명: 각 알파벳이 몇번 포함되어있는지 저장하기 위한 컨테이너.
-        예시: s 가 'aaaabbcc' 라면 
+        예시: s 가 'aaaabbcc' 라면
         -> Map { 'a' => 4, 'b' => 2, 'c' => 2 } 로 변환.
     */
   const dict = new Map();
@@ -97,7 +97,7 @@ function isValid(s) {
   });
 
   if (Object.keys(countDict).length > 2) {
-    /* 
+    /*
             입력 s 가 'aaabbc' 라면 Object.keys(countDict) 가 3이 되는데,
             이때 한글자를 지우는것으로 모든 알파벳의 포함 횟수를 똑같이 되도록
             할 수 없으므로 'NO' 를 반환.
@@ -119,12 +119,12 @@ function isValid(s) {
                 -> 'aaabbccdd' 가 입력되었다고 가정 할 때,
                    Object.keys(countDict)[0] 는 2 가 되고 (bb,cc,dd) Object.keys(countDict)[1] 3 이 됨 (aaa).
                    (Object.keys(countDict)[1] - Object.keys(countDict)[0]) == 1 을 만족)
-                   
+
                    반복 횟수가 1 차이 날 때 포함 횟수가 많은것이 1개이고 거기서 하나를 빼줘 1이 된다면 (aaa 에서 a 하나 제거)
                    모든 요소의 반복 횟수가 2가 되는것을 만족함.
                    (countDict[Object.keys(countDict)[1]] == 1 을 만족)
-                   
-                   
+
+
                    'aabbccdddeee' 가 입력되었다고 가정 할 때,
                    Object.keys(countDict)[0] 는 2 가 되고 Object.keys(countDict)[1] 3 이 되는것은 위와 동일하지만
                    countDict[Object.keys(countDict)[1]] 이 1 이 아닌 2 가 되므로 (ddd,eee 2개),
@@ -136,21 +136,21 @@ function isValid(s) {
       /* 조건문 설명
                ->  'aaaabbbbccccdddde' 가 입력되었다고 가정 할 때,
                    Object.keys(countDict)[0] 는 1이 되고 Object.keys(countDict)[1] 는 4가 된다.
-                   
-                   countDict[Object.keys(countDict)[0]] 는 1 (e) 이고 
+
+                   countDict[Object.keys(countDict)[0]] 는 1 (e) 이고
                    countDict[Object.keys(countDict)[1]] 는 4 (aaaa,bbbb,cccc,dddd) 가 되는데,
                    이때 주어진 문제를 만족하는것은 'e' 문자를 지우면 가능해진다.
-                   
-                   
+
+
                    하지만 'abcdefggg' 가 입력되었다고 가정 할 때에는
                    Object.keys(countDict)[0] 는 1, Object.keys(countDict)[1] 는 3이 된다.
-                   
-                   countDict[Object.keys(countDict)[0]] 는 6 (a,b,c,d,e,f) 이고 
+
+                   countDict[Object.keys(countDict)[0]] 는 6 (a,b,c,d,e,f) 이고
                    countDict[Object.keys(countDict)[1]] 는 1 (ggg) 이지만
                    a,b,c,d,e,f 중 하나를 지운다고 모든 알파벳의 빈도를 맞출 수 없고,
-                   3개가 있는 ggg 에서 하나를 지우더라도 나머지 알파벳처럼 1개가 되지 못하여 (ggg -> gg) 
+                   3개가 있는 ggg 에서 하나를 지우더라도 나머지 알파벳처럼 1개가 되지 못하여 (ggg -> gg)
                    해당 else if 조건식을 충족하지 못한다.
-               
+
             */
       return "YES";
     } else {
@@ -348,10 +348,74 @@ function isValid(s) {
 
 ### 풀이
 
+### 첫번째 풀이
+
 ```js
+function isValid(s) {  
+    const charMap = new Map();
+    const setValue = (arr, map) => {
+        arr.forEach(elem => {
+            const v = map.get(elem);
+            map.set(elem, v ? v + 1 : 1);
+        });
+    }
+    setValue([...s], charMap);
+    const valArr = [...charMap.values()].sort();
+    if (valArr[0] === valArr[1]) {
+        if (valArr[valArr.length - 1] - valArr[0] !== 1) return "NO";
+    }
+    const valMap = new Map();
+    setValue(valArr, valMap);
+    const countArr = [...valMap.values()].sort();
+    if (countArr.length <= 2 && countArr[0] - 1 === 0) return "YES";
+    return "NO";
+}
 ```
 
 ### 설명
+
+테스트 케이스 14번 통과가 안됐다.
+
+1. 처음 들어오는 문자열들을 순회하며 맵핑한다. 해당 문자가 등장한 횟수를 `charMap`에 담는다.
+2. 알파벳이 무엇인지는 크게 중요치 않으니, `charMap`의 value(등장횟수)들만 모은 후 오름차순으로 정렬하고, `valArr`에 따로 담는다.
+3. 여기서 만약, (`valArr`의 요소가 2개 이상이라고 가정하고) 0번째와 1번째가 같을 때, 오름차순으로 정렬했기에 배열의 마지막 요소의 수가 다를 가능성이 높다. 만약 마지막 요소와 첫번째 요소를 뺀 수가 1이 아니라면, 요소를 하나 제거해도 valid한 문자열이 아니기 때문에 `NO`를 여기서 미리 반환한다.
+4. `valArr`의 값들을 `valMap`에 다시 맵핑한다. 이 `valMap`의 밸류들을 다시 모아서 `countArr`에 담아 오름차순으로 다시 정렬한다.
+5. 예를 들어, valArr의 값이 `[2, 2, 2, 2, 2, 2, 2, 3]` 이었다면 `countArr`에는 `[1, 7]`로 들어가게 된다.
+6. `countArr`의 요소의 수가 2개 이상이거나, 0번째 요소가 1이 아니라면 valid한 문자열이 아니다.
+   - 요소의 수가 2개 이상이라면 하나를 제거하더라도 통일되지 않는다
+   - 오름차순으로 정렬했기에, 배열 0번째 요소가 1이 아니라면 하나를 제거하더라도 통일되지 않는다
+7. 조건문을 모두 통과했을때만 `YES`를 반환한다.
+
+### 두번째 풀이
+
+```js
+function isValid(s) {  
+    const setValue = (arr, map) => {
+        arr.forEach(elem => {
+            const v = map.get(elem);
+            map.set(elem, v ? v + 1 : 1);
+        });
+    }
+    const charMap = new Map();
+    setValue([...s], charMap);
+
+    const valueArr = [...charMap.values()];
+    const baseChar = valueArr[0];
+
+    let count = 0;
+    for (let i = 0; i < valueArr.length; i++) {
+        if (valueArr[i] !== baseChar) count++;
+        // 현재 인덱스 값과 0번째 기준의 차가 1 이상일 때에도 NO를 반환해야 한다.
+        if (count > 1 || valueArr[i] - baseChar > Math.abs(1)) return "NO";
+    }
+
+    return "YES";
+}
+```
+
+### 설명
+
+리즈가 올려준 풀이법을 참고했다. 더한 부분은 순회를 돌 때, 기준값과 차이가 1 이상인지 아닌지에 대해 판별하는 부분을 추가했다. 저 부분이 없어도 통과에는 무리가 없었는데, 예를 들어 `abcdefghhgfedecbaeeeeeeeeeeeeeeee` 라는 문자열이 들어갔을 경우, `[ 2, 2, 2, 2, 19, 2, 2, 2 ]` 의 값으로 `valueArr`가 만들어지기 때문에, 답을 판별하는 `count` 값이 똑같이 1만 올라가서 `YES`로 판별했다. 문제에선 `하나의 인덱스에 하나의 문자만` 삭제했을 때 유효해야한다고 해서, 기준값과 차가 1 이상이라면 하나를 제거하더라도 유효한 값이 될 수 없기에 해당 조건문을 추가해서 즉시 `NO`를 반환하도록 했다.
 
 ---
 
