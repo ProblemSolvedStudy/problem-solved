@@ -115,9 +115,37 @@ function hourglassSum(arr) {
 ### 풀이
 
 ```js
+function hourglassSum(arr) {
+    const sumArr = [];
+    for(let i = 0; i < arr.length; i++) {
+        for(let j = 0; j < arr.length; j++) {
+            if (i + 2 <= arr.length - 1 && j + 2 <= arr.length - 1) {
+                sumArr.push(
+                  // 상단 3 x 1
+                  arr[i][j] +
+                  arr[i][j + 1] +
+                  arr[i][j + 2] +
+                  // 중앙 1 x 1
+                  arr[i + 1][j + 1] +
+                  // 하단 3 x 1
+                  arr[i + 2][j] +
+                  arr[i + 2][j + 1] +
+                  arr[i + 2][j + 2]);
+            }
+        }
+    }
+    return sumArr.reduce((a, b) => Math.max(a, b));
+}
 ```
 
 ### 설명
+
+숫자로만 이루어진 `6x6 배열`이 주어지고, 해당 2차원 배열 안에서 `3x3 장인 공 한자 모양(모래시계)`에 해당하는 수들의 합중 가장 높은 수의 합을 구하는 문제이다.
+
+1. 우선 2중 for문으로 순회를 시작한다.
+2. 3x3인 장인 공 형태(모래시계) 형태가 되기 위해선, 가로의 다다음 인덱스가 존재해야 하고, 세로도 마찬가지다. `i + 2 <= arr.length - 1 && j + 2 <= arr.length - 1`
+3. 조건을 충족한다면 형태를 이루는 수들의 합을 전부 더해서, `sumArr`에 Push한다.
+4. `sumArr`를 순회하며 가장 큰 값을 찾아 반환한다.
 
 ---
 
