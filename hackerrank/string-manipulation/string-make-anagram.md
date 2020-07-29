@@ -114,9 +114,24 @@ strB를 순회하면서 strA에서 등장했던 문자의 경우 출처를 `both
 ### 풀이
 
 ```js
+function makeAnagram(a, b) {
+    const arrA = [...a];
+    const arrB = [...b];
+    for (let i = arrA.length - 1; i >= 0; i--) {
+        for (let j = arrB.length - 1; j >= 0; j--) {
+            if (arrA[i] === arrB[j]) {
+                arrA.splice(i, 1);
+                arrB.splice(j, 1);
+            }
+        }
+    }
+    return arrA.length + arrB.length;
+}
 ```
 
 ### 설명
+
+후의 풀이를 참고했다. 생각보다 굉장히 간단하게 풀 수 있는 문제라 놀랐다. 2중 for문을 돌며 서로 같은 문자열만 삭제해주면 남는 문자열의 수가 삭제해야 할 문자들이 된다.
 
 ---
 

@@ -108,9 +108,32 @@ return matches + remainderMatches;
 ### 풀이
 
 ```js
+function repeatedString(s, n) {
+    let answer = 0;
+    const stringLength = s.length;
+    const targetString = 'a';
+    const stringCount = [...s].reduce((acc, cur) => {
+        if (cur === targetString) acc += 1;
+        return acc;
+    }, 0);
+    answer += parseInt(n / stringLength) * stringCount;
+    const remainder = n % stringLength;
+    if (remainder > 0) {
+        for (let i = 0; i < remainder; i++) {
+            if ( s[i] === targetString ) answer += 1;
+        }
+    }
+    return answer;
+}
 ```
 
 ### 설명
+
+> 문자열 안에 있는 a를 구하는 함수
+
+1. 우선 `stringCount` 변수 안에 문자열 `s`안에 있는 알파벳 a의 수를 센다.
+2. `문자열 n의 길이 / 전체 문자 길이 s` * 문자열 a의 수를 우선 더한다. 이 값은 나눗셈에서 '몫'과 같다.
+3. `remainder` 나머지 값을 구하고, 나머지가 0 이상일 경우, 나머지가 시작되는 인덱스부터 끝까지 순회하며 알파벳 a가 존재하는지 아닌지 확인하고 더한다.
 
 ---
 

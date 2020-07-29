@@ -67,9 +67,19 @@ function rotLeft(a, d) {
 ### 풀이
 
 ```js
+function rotLeft(a, d) {
+    const arr = a;
+    for(let i = 0; i < d; i++) {
+        const element = arr.shift();
+        arr.push(element);
+    }
+    return arr;
+}
 ```
 
 ### 설명
+
+배열을 왼쪽으로 돌리는 문제. d가 1이라면, 0번째 요소를 배열 맨 마지막 요소에 붙이면 된다. 숫자 d만큼 순회를 돌며, `shift()`한 요소를 `push()`로 뒤에 붙이면 된다.
 
 ---
 

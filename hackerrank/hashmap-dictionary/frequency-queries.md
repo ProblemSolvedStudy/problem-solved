@@ -110,9 +110,36 @@ function freqQuery(queries) {
 ### 풀이
 
 ```js
+function freqQuery(queries) {
+    const freqMap = new Map();
+    const answer = [];
+    queries.forEach(([type, num]) => {
+        switch (type) {
+            case 1: {
+                const val = freqMap.get(num);
+                freqMap.set(num, val ? val + 1 : 1);
+                break;
+            }
+            case 2: {
+                const val = freqMap.get(num);
+                if (val) freqMap.set(num, val - 1);
+                break;
+            }
+            case 3: {
+                const mapIter = freqMap.values();
+                answer.push([...mapIter].some(value => value === num) ? 1 : 0);
+                break;
+            }
+            default: break;
+        }
+    });
+    return answer;
+}
 ```
 
 ### 설명
+
+switch문을 돌며 해당 type에 관한 요청을 처리해주었다.
 
 ---
 

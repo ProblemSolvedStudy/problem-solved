@@ -135,9 +135,18 @@ reduce 메소드는 배열의 모든 요소에 대해 reducer를 실행하기 �
 ### 풀이
 
 ```js
+function alternatingCharacters(s) {
+  return [...s].reduce((count, currChar, i, charArr) => {
+      const nextChar = charArr[i + 1];
+      if (nextChar === currChar) count += 1;
+      return count;
+  }, 0);
+}
 ```
 
 ### 설명
+
+다음 인덱스의 문자열이 현재 인덱스의 문자열과 같으면 `count`를 1 더해주면 된다.
 
 ---
 
