@@ -7,7 +7,42 @@
 ### 풀이
 
 ```js
+function countTriplets(arr, r) {
+    let answer = 0;
+    const countDictionary = {};
+
+    for ( let i = 0 ; i < arr.length ; ++i ) {
+        if ( !countDictionary[arr[i]] ) countDictionary[arr[i]] = 1;
+        else countDictionary[arr[i]] += 1;
+    }
+
+    const currentDictionary = {};
+    currentDictionary[arr[0]] = 1;
+    
+    const coefficient = r == 1 ? 1 : 0;
+
+    for ( let i = 1 ; i < arr.length - 1 ; ++i ) {
+        if ( Number.isInteger(arr[i] / r) && currentDictionary[arr[i] / r] ) {
+            if ( !currentDictionary[arr[i] * r] && countDictionary[arr[i] * r] ) {
+                answer += currentDictionary[arr[i] / r] * 
+                          (countDictionary[arr[i] * r] - coefficient);
+            }
+            else if ( currentDictionary[arr[i] * r] && countDictionary[arr[i] * r] ) {
+                answer += currentDictionary[arr[i] / r] * 
+                          (countDictionary[arr[i] * r] - currentDictionary[arr[i] * r] - coefficient);
+            }
+        }
+
+        if ( !currentDictionary[arr[i]] ) currentDictionary[arr[i]] = 1;
+        else currentDictionary[arr[i]] += 1;
+    }
+
+    return answer;
+}
 ```
+
+### 설명
+
 
 ## Huey
 
