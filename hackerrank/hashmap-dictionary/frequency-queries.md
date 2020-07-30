@@ -7,6 +7,45 @@
 ### 풀이
 
 ```js
+function freqQuery(queries) {
+    const dictionary = {};
+    const countDictionary = {};
+    const answer = [];
+
+    for ( let i = 0 ; i < queries.length ; ++i ) {
+        if ( queries[i][0] != 3 ) {
+            if ( !dictionary[queries[i][1]] ) {
+                dictionary[queries[i][1]] = queries[i][0];
+                
+                if ( !countDictionary[queries[i][0]] ) {
+                    countDictionary[queries[i][0]] = {};
+                }
+
+                countDictionary[queries[i][0]][queries[i][1]] = true;
+            }
+            else {
+                const beforeCount = dictionary[queries[i][1]];
+                dictionary[queries[i][1]] += queries[i][0];
+
+                (countDictionary[beforeCount])[queries[i][1]] = undefined;
+                if ( Object.keys(countDictionary[beforeCount]).length == 0 ) {
+                    countDictionary[beforeCount] = undefined;
+                }
+
+                if ( !countDictionary[beforeCount + queries[i][0]] ) countDictionary[beforeCount + queries[i][0]] = {};
+                countDictionary[beforeCount + queries[i][0]][queries[i][1]] = true;
+            }
+        }
+        else {
+
+
+            if ( countDictionary[queries[i][1]] ) answer.push(1);
+            else answer.push(0);
+        }
+    }
+
+    return answer;
+}
 ```
 
 ## Huey
@@ -22,28 +61,48 @@
 
 ```js
 function freqQuery(queries) {
-  let map = new Map(); // 1
-  let result = [];
+    let map = new Map();
+    let answer = [];
 
-  queries.forEach(([type, val]) => {
-    // 2
-    const mVal = map.get(val);
-    switch (type) {
-      case 1: // 3
-        mVal ? map.set(val, mVal + 1) : map.set(val, 1);
-        break;
-      case 2: // 4
-        if (mVal) map.set(val, mVal - 1);
-        break;
-      case 3: // 5
-        result.push([...map.values()].some((v) => v === val) ? 1 : 0);
-        break;
-      default:
-        break;
+    for ( let i = 0 ; i < queries.length ; ++i ) {
+        const count = map.get(queries[i][1]);
+        
+        switch (queries[i][0]) {
+            case 1: {
+                if ( count ) {
+                    map.set(queries[i][1], count + 1);
+                }
+                else {
+                    map.set(queries[i][1], 1);
+                }
+
+                break;
+            }
+            case 2: {
+                if ( count ) {
+                    map.set(queries[i][1], count - 1);
+                }
+
+                break;
+            }
+            case 3: {
+                let findValue = false;
+
+                for ( let item of map ) {
+                    if ( item[1] == queries[i][1] ) {
+                        findValue = true;
+                        break;
+                    }
+                }
+
+                findValue ? answer.push(1) : answer.push(0);
+
+                break;
+            }
+        }
     }
-  });
 
-  return result;
+    return answer;
 }
 ```
 
