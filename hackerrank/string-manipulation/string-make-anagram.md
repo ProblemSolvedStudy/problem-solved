@@ -7,6 +7,48 @@
 ### 풀이
 
 ```js
+function makeAnagram(a, b) {
+    let answer = 0;
+
+    const firstMap = new Map();
+    const secondMap = new Map();
+
+    for ( let i = 0 ; i < a.length ; ++i ) {
+        const value = firstMap.get(a[i]);
+
+        value ? firstMap.set(a[i], value + 1) : firstMap.set(a[i], 1);
+    }
+
+    for ( let i = 0 ; i < b.length ; ++i ) {
+        const value = secondMap.get(b[i]);
+
+        value ? secondMap.set(b[i], value + 1) : secondMap.set(b[i], 1);
+    }
+
+    for (let [key, value] of firstMap) {
+        const secondValue = secondMap.get(key);
+
+        if ( !secondValue ) answer += value;
+        else {
+            if (value > secondValue) {
+                answer += value - secondValue;
+            }
+        }
+    }
+
+    for (let [key, value] of secondMap) {
+        const firstValue = firstMap.get(key);
+
+        if ( !firstValue ) answer += value;
+        else {
+            if (value > firstValue) {
+                answer += value - firstValue;
+            }
+        }
+    }
+
+    return answer;
+}
 ```
 
 ## Huey
