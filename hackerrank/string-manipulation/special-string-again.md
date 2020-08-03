@@ -105,4 +105,3 @@ function substrCount(n, s) {
 ## 참고자료
 
 - [string manipulation 문제 푸는 짧은 팁](https://ally10.tistory.com/6)
--
