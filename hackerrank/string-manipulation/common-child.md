@@ -150,3 +150,4 @@ Y   [ 0, 0, 1, 1, 1, 2 ] ]
 ## 참고자료
 
 - [LCS 설명](https://twinw.tistory.com/126)
+- [백준 LCS 문제](https://www.acmicpc.net/problem/9251)
