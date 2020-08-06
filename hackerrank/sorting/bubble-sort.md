@@ -34,9 +34,33 @@
 ### 풀이
 
 ```js
+function countSwaps(a) {
+  let count = 0;
+
+  for (let i = 0; i < a.length; i++) {  
+    for (let j = i + 1; j < a.length; j++) {
+        if (a[i] > a[j]) {
+            let temp  = a[i];
+            a[i] = a[j];
+            a[j] = temp;
+            count++;
+        }
+    }  
+  }
+  
+  let result = `Array is sorted in ${count} swaps.\nFirst Element: ${a[0]}\nLast Element: ${a[a.length - 1]}`;
+
+  console.log(result);
+}
 ```
 
 ### 설명
+
+> 버블 소트를 한 결과를 문장으로 출력하는 문제.
+
+- **버블 소트**는 정렬 알고리즘 중에 가장 쉬우면서 시간복잡도가 큰 알고리즘이다.
+- 이중 반복문 안에서 값의 크기 비교를 통해 `swap`하면서 개수를 센다.
+- 반복문 결과를 `template literal`로 저장해 콘솔로 출력하면 된다.
 
 ## Hoi
 

@@ -34,9 +34,26 @@
 ### 풀이
 
 ```js
+function maximumToys(prices, k) {
+  prices.sort((a, b) => a - b);
+ 
+  const calcMax = (result, v) => {
+    if (k - v < 0) return result;
+    k -= v;
+    return result + 1;
+  };
+
+  return prices.reduce(calcMax, 0);
+}
 ```
 
 ### 설명
+
+> 주어진 금액으로 가장 많이 살 수 있는 장난감의 개수를 구하는 문제
+
+1. 가장 많은 개수를 구하기 위해서는 `작은 금액으로 여러 개`를 구매해야 한다. 따라서 `prices 배열`을 오름차순으로 정렬한다.
+2. 주어진 금액인 `k`가 prices를 뺐을 때 0보다 작으면 원래 값을 리턴하고, 그게 아니면 price를 빼고 개수를 1 늘려 준다.
+3. `reduce`를 사용해 값을 계산하고 리턴한다.
 
 ## Hoi
 
