@@ -132,10 +132,47 @@ Y   [ 0, 0, 1, 1, 1, 2 ] ]
 
 ## Reese
 
+> 재귀를 사용한 방식
+> ![LCS - recursion](https://i.postimg.cc/xTfcLZXK/image.png)
+
+> for loop을 사용한 방식
+> ![LCS - for loop](https://i.postimg.cc/Hsg0NMzT/image.png)
+
 ### 풀이
 
 ```js
+function commonChild(s1, s2) {
+  const length1 = s1.length; // O(1)
+  const length2 = s2.length; // O(1)
+  if (length1 === 0 || length2 === 0) return 0;
+
+  const memo = [];
+
+  for (let i = 0; i <= length2; i++) {
+    //O(m)
+    memo.push(Array(length1 + 1).fill(0));
+  }
+
+  for (let i = 0; i < length1; i++) {
+    // O(n * m)
+    for (let j = 0; j < length2; j++) {
+      if (s1[i] === s2[j]) {
+        memo[i + 1][j + 1] = memo[i][j] + 1;
+      } else {
+        memo[i + 1][j + 1] = Math.max(memo[i + 1][j], memo[i][j + 1]);
+      }
+    }
+  }
+
+  return memo[length1][length2];
+}
+
+// 시간복잡도 : O(n * m)
+// 공간복잡도 : O(n * m)
 ```
+
+- 다이나믹 프로그래밍에 대해 학습하고 푼 첫 문제이다.  
+  다이나믹 프로그래밍을 구현하는 여러가지 방법이 있었는데 이중 for문을 사용하는 방식이 가장 직관적이고 이해가 잘 가서 그 방식으로 풀었다.
 
 ### 설명
 
@@ -154,3 +191,5 @@ Y   [ 0, 0, 1, 1, 1, 2 ] ]
 
 - [LCS 설명](https://twinw.tistory.com/126)
 - [백준 LCS 문제](https://www.acmicpc.net/problem/9251)
+- [Longest Common Subsequence(LCS) Dynamic Programming In O(N) Space](https://www.youtube.com/watch?v=DuikFLPt8WQ)
+- [Common Child HackerRank Solution](https://www.youtube.com/watch?v=ItRZRx8kvwY)
