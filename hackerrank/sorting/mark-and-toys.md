@@ -36,7 +36,7 @@
 ```js
 function maximumToys(prices, k) {
   prices.sort((a, b) => a - b);
- 
+
   const calcMax = (result, v) => {
     if (k - v < 0) return result;
     k -= v;
@@ -120,9 +120,26 @@ function maximumToys(prices, k) {
 ### 풀이
 
 ```js
+function maximumToys(prices, k) {
+    let count = 0;
+    let totalPrice = 0;
+    prices.sort((a, b) => a - b);
+    for (let i = 0; i < prices.length; i++) {
+        totalPrice += prices[i];
+        if (totalPrice > k) break;
+        count++;
+    }
+    return count;
+}
 ```
 
 ### 설명
+
+> 가지고 있는 돈 (k) 안에서 가장 많은 장난감(장난감 가격 배열 prices)을 살 수 있는 경우를 구하는 문제
+
+- 장난감 가격이 저렴하면 저렴할수록 많은 양을 구매할 수 있기 때문에, `prices`를 우선 오름차순으로 정렬했다.
+- 순회를 돌면서 전체 장난감 가격 `totalPrice`에 계속해서 더해준다. 장난감 `count`를 1씩 계속 증가시킨다.
+- `totalPrice`가 가지고 있는 돈`k`를 넘으면 반복문을 종료하고 `count`를 반환한다.
 
 ---
 
