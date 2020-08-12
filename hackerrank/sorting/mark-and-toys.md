@@ -60,9 +60,29 @@ function maximumToys(prices, k) {
 ### 풀이
 
 ```js
+function maximumToys(prices, k) {
+  let wallet = k;
+  let toyCount = 0;
+  let sortPrices = prices.sort((a, b) => a - b);
+
+  for (let i = 0; i < prices.length; i++) {
+    if (wallet < sortPrices[i]) {
+      break;
+    } else {
+      wallet -= sortPrices[i];
+      toyCount++;
+    }
+  }
+
+  return toyCount;
+}
 ```
 
 ### 설명
+
+- 최대한 많은 양의 장난감을 사야하기 때문에 정렬이 안된 배열을 오름차순으로 정렬한다.
+- 이 후 첫번째 인덱스부터 장난감을 살 수 있다면 toyCount를 +1 해주고 해당 index의 가격만큼 wallet에서 빼준다.
+- 만약에 wallet에 있는 돈으로 더이상 살 수 없는 단계까지 도달한다면 더이상 순회할 이유가 없기 떄문에 반복문을 break 해주고 결과를 retrun 한다.
 
 ## Reese
 
@@ -121,15 +141,15 @@ function maximumToys(prices, k) {
 
 ```js
 function maximumToys(prices, k) {
-    let count = 0;
-    let totalPrice = 0;
-    prices.sort((a, b) => a - b);
-    for (let i = 0; i < prices.length; i++) {
-        totalPrice += prices[i];
-        if (totalPrice > k) break;
-        count++;
-    }
-    return count;
+  let count = 0;
+  let totalPrice = 0;
+  prices.sort((a, b) => a - b);
+  for (let i = 0; i < prices.length; i++) {
+    totalPrice += prices[i];
+    if (totalPrice > k) break;
+    count++;
+  }
+  return count;
 }
 ```
 

@@ -37,18 +37,20 @@
 function countSwaps(a) {
   let count = 0;
 
-  for (let i = 0; i < a.length; i++) {  
+  for (let i = 0; i < a.length; i++) {
     for (let j = i + 1; j < a.length; j++) {
-        if (a[i] > a[j]) {
-            let temp  = a[i];
-            a[i] = a[j];
-            a[j] = temp;
-            count++;
-        }
-    }  
+      if (a[i] > a[j]) {
+        let temp = a[i];
+        a[i] = a[j];
+        a[j] = temp;
+        count++;
+      }
+    }
   }
-  
-  let result = `Array is sorted in ${count} swaps.\nFirst Element: ${a[0]}\nLast Element: ${a[a.length - 1]}`;
+
+  let result = `Array is sorted in ${count} swaps.\nFirst Element: ${
+    a[0]
+  }\nLast Element: ${a[a.length - 1]}`;
 
   console.log(result);
 }
@@ -67,9 +69,35 @@ function countSwaps(a) {
 ### 풀이
 
 ```js
+function countSwaps(a) {
+  let count = 0;
+
+  const n = a.length;
+  let firstIdx = 0;
+  let lastIdx = a.length - 1;
+
+  for (let i = 0; i < n; i++) {
+    for (let j = 0; j < n - 1; j++) {
+      if (a[j] > a[j + 1]) {
+        let temp = a[j];
+        a[j] = a[j + 1];
+        a[j + 1] = temp;
+        count++;
+      }
+    }
+  }
+
+  console.log(`Array is sorted in ${count} swaps.`);
+  console.log(`First Element: ${a[firstIdx]}`);
+  console.log(`Last Element: ${a[lastIdx]}`);
+}
 ```
 
 ### 설명
+
+- 이중 반복문을 이용해서 prev index와 next index를 비교해준다.
+- 순서의 변화가 있다면 count에 +1을 해준다.
+- 해당 결과를 logging 한다.
 
 ## Reese
 
@@ -96,7 +124,9 @@ function countSwaps(a) {
   }
 
   console.log(
-    `Array is sorted in ${swaps} swaps.\nFirst Element: ${a[0]}\nLast Element: ${a[len - 1]}`
+    `Array is sorted in ${swaps} swaps.\nFirst Element: ${
+      a[0]
+    }\nLast Element: ${a[len - 1]}`
   );
 }
 
@@ -119,22 +149,21 @@ function countSwaps(a) {
 
 ```js
 function countSwaps(a) {
-    let numSwaps = 0;
-    for (let i = 0; i < a.length; i++) {
-        for (let j = 0; j < a.length - 1; j++) {
-            if (a[j] > a[j + 1]) {
-                const temp = a[j]
-                a[j] = a[j + 1];
-                a[j + 1] = temp;
-                numSwaps++;
-            }
-        }
+  let numSwaps = 0;
+  for (let i = 0; i < a.length; i++) {
+    for (let j = 0; j < a.length - 1; j++) {
+      if (a[j] > a[j + 1]) {
+        const temp = a[j];
+        a[j] = a[j + 1];
+        a[j + 1] = temp;
+        numSwaps++;
+      }
     }
-    console.log(`Array is sorted in ${numSwaps} swaps.
+  }
+  console.log(`Array is sorted in ${numSwaps} swaps.
 First Element: ${a[0]}
 Last Element: ${a[a.length - 1]}`);
 }
-
 ```
 
 ### 설명
