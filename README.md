@@ -4,7 +4,7 @@
 
 - [1차 문제풀이 모음 (20.04.25 ~ 20.06.20)](<https://github.com/ProblemSolvedStudy/problem-solved/wiki/1%EC%B0%A8-%EB%AC%B8%EC%A0%9C%ED%92%80%EC%9D%B4-%EB%AA%A8%EC%9D%8C-(20.04.25-~-20.06.20)>)
 
-- [2차 문제풀이 모음 (20.07.02 ~ )](<https://github.com/ProblemSolvedStudy/problem-solved/wiki/2%EC%B0%A8-%EB%AC%B8%EC%A0%9C%ED%92%80%EC%9D%B4-%EB%AA%A8%EC%9D%8C-(20.07.02-~-)>)
+- [2차 문제풀이 모음 (20.07.02 ~ )](https://github.com/ProblemSolvedStudy/problem-solved/wiki/2%EC%B0%A8-%EB%AC%B8%EC%A0%9C%ED%92%80%EC%9D%B4-%EB%AA%A8%EC%9D%8C-(20.07.02-~-20.09.24))
 
 ## 진행방식
 

@@ -34,9 +34,58 @@
 ### 풀이
 
 ```js
+function isBalanced(s) {
+  let arr = [];
+  
+  // 1번 풀이
+  for (let i = 0; i < s.length; i++) {
+    if (s[i] === '{') arr.push('}');
+    else if (s[i] === '[') arr.push(']');
+    else if (s[i] === '(') arr.push(')');
+    else if (s[i] === arr[arr.length - 1]) arr.pop();
+    else return "NO";
+  }
+
+  // 2번 풀이 
+  const opens = ['(', '{', '['];
+  const closes = [')', '}', ']'];
+  const map = {
+      ')': '(',
+      '}': '{',
+      ']': '['
+  };
+
+  for (let i = 0; i < s.length; i++) {
+      if (opens.includes(s[i])) arr.push(s[i]);
+
+      if (closes.includes(s[i])) {
+          const paired = arr.pop();
+          if (map[s[i]] !== paired) return 'NO';
+      }
+  }
+
+  return arr.length ? "NO" : "YES";
+}
+
 ```
 
 ### 설명
+
+> 괄호들이 짝이 맞는지 확인하는 문제
+
+#### 1번 풀이
+
+- 주어진 괄호인 `{[()]}`의 여는 괄호들을 닫는 괄호로 하나씩 치환해 배열에 추가한다.
+- 닫는 괄호가 나오고 배열의 마지막 문자와 같으면 배열에 `pop하여 삭제`한다.
+- 위의 두 조건에도 들지 않으면 짝이 맞지 않는 것이므로 `NO를 반환`한다.
+- 여는 괄호의 숫자가 많을 때 NO를 반환하기 위해 마지막에 남은 문자의 개수로 `YES와 NO를 판단하여 반환`한다.
+
+#### 2번 풀이
+
+- `opens와 closes`들을 배열로 묶고, 객체를 사용해 `닫는 괄호는 key`로, `여는 괄호는 value`로 묶는다.
+- 반복문을 돌며 1번 풀이와 동일하게 여는 괄호이면 배열에 추가한다.
+- 닫는 괄호가 나오면 `pop`하여 짝이 맞는지를 만들었던 객체를 통해 판별한다.
+- 마지막 반환 부분은 1번 풀이와 동일하다.
 
 ## Hoi
 

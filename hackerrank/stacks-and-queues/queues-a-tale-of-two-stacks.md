@@ -34,9 +34,52 @@
 ### 풀이
 
 ```js
+// 한 줄씩 읽게 하기 위한 코드
+let inputString = '';
+let currentLine = 0;
+
+process.stdin.on('data', inputStdin => {
+    inputString += inputStdin;
+});
+
+process.stdin.on('end', _ => {
+    inputString = inputString.replace(/\s*$/, '')
+        .split('\n')
+        .map(str => str.replace(/\s*$/, ''));
+});
+
+function readLine() {
+    return inputString[currentLine++];
+}
+
+// 풀이 코드
+function processData(input) {
+  let arr = [];
+  const q = parseInt(readLine(), 10);
+  
+  for (let i = 0; i < q; i++) {
+    const s = readLine();
+    const sArr = s.split(' ');
+    const type = sArr[0];
+
+    if (type === '1') arr.push(sArr[1]);
+    else if (type === '2') arr.shift();
+    else if (type === '3') console.log(arr[0]);
+  }
+}
 ```
 
 ### 설명
+
+> 여러 라인으로 입력되는 것을 타입에 따라 다르게 작동하는 큐, 스택을 구현하는 문제
+
+나는 Lifo인 스택으로 구현하였다.
+
+- 변수 q에 라인 개수를 담는다.
+- q를 기반으로 반복문을 돌며 타입에 따라 다른 명령어를 실행한다.
+  - 1일 때: 주어진 숫자를 arr에 push한다.
+  - 2일 때: arr의 가장 앞의 숫자를 shift하여 삭제한다.
+  - 3일 때: arr의 가장 첫 요소를 콘솔로 출력한다.
 
 ## Hoi
 
